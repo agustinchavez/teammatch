@@ -171,7 +171,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
-  coffee-rails (~> 4.1.0)
   factory_girl_rails
   faker
   jbuilder (~> 2.0)
