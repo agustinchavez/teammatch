@@ -17,6 +17,14 @@ players = [ana, natalie, carla, agustin]
 
 cobra_kai = Team.create(team_name: "Cobra Kai fc", info: Faker::Lorem.paragraph(1), admin_id: players.sample.id)
 
+cobra_kai.players << agustin
+cobra_kai.players << natalie
+cobra_kai.players << ana
+
 players.each do |player|
-  cobra_kai << player
+  player.positions.create(name: Faker::Team.creature)
+  player.sports.create(name: Faker::Book.title)
+  player.media.create(content: Faker::Lorem.paragraph(1), link: Faker::Internet.url)
 end
+
+cobra_kai.media.create(content: Faker::Lorem.paragraph(1), link: Faker::Internet.url)
