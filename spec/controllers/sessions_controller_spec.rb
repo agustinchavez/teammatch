@@ -29,10 +29,10 @@ describe SessionsController do
       expect(session[:player_id]).to eq @player.id
     end
 
-     it 'redirects to path when player logs in' do
+     it 'redirects to home page when player logs in' do
       player_hash = {username: @player.username, email: @player.email, password: @player.password}
       post :create, player_hash
-      expect(response).to redirect_to(questions_path)
+      expect(response).to redirect_to(root_path)
     end
 
     it 'does not log in an invalid player' do
@@ -58,11 +58,11 @@ describe SessionsController do
       expect(session[:player_id]).to eq nil
     end
 
-    it 'redirects to the questions' do
+    it 'redirects to home' do
       player_hash = {username: @player.username, email: @player.email, password: @player.password}
       post :create, player_hash
       get :destroy
-      expect(response).to redirect_to(questions_path)
+      expect(response).to redirect_to(root_path)
     end
 
   end
