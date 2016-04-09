@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new, as: :login'
 
   resources :teams
-  resources :sports
-  resources :positions
+  resources :sports, only: [:create, :new, :show, :destroy]
+  resources :positions, only: [:create, :new, :show, :destroy]
   resources :medium
   resources :players
 
