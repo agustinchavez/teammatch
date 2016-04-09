@@ -31,10 +31,16 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :test do
-  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'byebug'
+  gem 'shoulda-matchers'
+  gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'poltergeist'
 end
 
 group :development do
