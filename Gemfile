@@ -31,21 +31,24 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :test do
-  gem 'factory_girl_rails'
-  gem 'faker'
-  gem 'byebug'
-  gem 'shoulda-matchers'
-  gem 'pry-rails'
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'poltergeist'
+  gem 'shoulda-matchers'
+  gem 'simplecov'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
-  gem 'faker'
   gem 'spring'
+end
+
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'byebug'
+  gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
