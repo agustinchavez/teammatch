@@ -8,7 +8,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.integer :zip
-      t.string :phone
+      t.string :phone, null: false
       t.text :info
 
       t.timestamps null: false
