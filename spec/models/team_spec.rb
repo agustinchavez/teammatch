@@ -1,5 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Team, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe Team do
+  it "exists" do
+     expect(Team.new).to be_a(Team)
+   end
 end
