@@ -4,9 +4,17 @@ class SessionsController < ApplicationController
   end
 
   def create
+    auth = request.env['omniauth.auth']
+    session[:omniauth] =  auth.except('extra')
+    player = Player.sign_in_from_omniauth(auth)
+    session[:player_id] = player.id
+    redirect_to root_path "Signed In"
   end
 
   def destroy
+    session[:player_id] = nil
+    session[:omniauth] = nil
+    redirect_to root_path, notice: "Signed Out"
   end
 
 end

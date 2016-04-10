@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   get 'register' => 'players#new, as: :register'
   get 'logout' => 'sessions#destroy, as: :logout'
-  get 'login' => 'sessions#new, as: :login'
 
   resources :teams
   resources :sports, only: [:create, :new, :show, :destroy]
@@ -11,4 +10,7 @@ Rails.application.routes.draw do
   resources :medium
   resources :players
 
+  get '/login', :to => 'sessions#new', :as => :login
+  get '/auth/:provider/callback', :to => 'sessions#create'
+  get '/auth/failure', :to => 'sessions#failure'
 end

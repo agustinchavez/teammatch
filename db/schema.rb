@@ -17,8 +17,13 @@ ActiveRecord::Schema.define(version: 20160408220450) do
   enable_extension "plpgsql"
 
   create_table "media", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "media_type"
+    t.text     "content"
+    t.string   "link"
+    t.integer  "showable_id"
+    t.string   "showable_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "player_positions", force: :cascade do |t|
@@ -45,15 +50,17 @@ ActiveRecord::Schema.define(version: 20160408220450) do
   create_table "players", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
-    t.string   "password"
+    t.string   "password_digest"
     t.string   "address"
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
-    t.string   "phone"
+    t.string   "phone",           null: false
     t.text     "info"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "provider",        null: false
+    t.string   "uid",             null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "positions", force: :cascade do |t|
