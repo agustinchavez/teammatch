@@ -2,7 +2,11 @@ require 'rails_helper'
 
 describe PositionsController do
 
-  let(:position) {Position.new}
+before(:each) do
+    player = FactoryGirl.create(:player)
+    stub_current_player(player)
+    @position = FactoryGirl.create(:position)
+  end
 
   it 'is successful' do
     get :new

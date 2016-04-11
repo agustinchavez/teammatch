@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :sport do
-    name "MyString"
+    name { Faker::Book.sport }
   end
 
 end

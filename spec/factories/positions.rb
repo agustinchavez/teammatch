@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :position do
-    username { Faker::Team.creature }
+    name { Faker::Team.creature }
   end
 end
