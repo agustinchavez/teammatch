@@ -7,4 +7,4 @@
 !/log/.keep
 /tmp
 /coverage
-/app/controllers/.bashrc.save
+config/secrets.yml
