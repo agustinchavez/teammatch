@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     auth = request.env['omniauth.auth']
     session[:omniauth] =  auth.except('extra')
-    player = Player.sign_in_from_omniauth(auth)
+    player = Authentication.create_with_omniauth(auth)
     session[:player_id] = player.id
     redirect_to root_path "Signed In"
   end
