@@ -1,24 +1,11 @@
 <div>
-  <h1>List of Teams</h1>
-  <table style="width:100%">
-  <% @teams.each do |team| %>
-  <tr>
-    <td><%= team.name %></td>
-    <td><%= team.info %></td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Guadalaja</td>
-    <td>Chivas</td>
-    <td>1906</td>
-  </tr>
-  <% end %>
-</table>
-
-  <ul>
+  <h1 align="center">List of Teams</h1>
+  <table border="1" style="width:75%" align="center">
     <% @teams.each do |team| %>
-    <li><%= team.name %></li>
+    <tr>
+      <td>Name: <%= team.name %></td>
+      <td>Info: <%= team.info %></td>
+    </tr>
     <% end %>
-  </ul>
-
+  </table>
 </div>

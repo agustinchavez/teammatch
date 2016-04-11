@@ -4,9 +4,11 @@ class TeamsController < ApplicationController
     @teams = Team.all
   end
 
+  def show
+  end
+
   def new
     @team = Team.new
-    render :new
   end
 
   def create
