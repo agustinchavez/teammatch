@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :position do
-    name "MyString"
+    username { Faker::Team.creature }
   end
-
 end
