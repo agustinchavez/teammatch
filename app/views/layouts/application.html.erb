@@ -9,13 +9,13 @@
 <body>
   <header>
     <a href="/">TeamMatch</a>
-    <%  #if logged_in? %>
+    <%  if logged_in? %>
       <a href="#"><p>current_player.username</p></a>
       <a href="#"><p>Log Out</p></a>
-    <% #else %>
+    <% else %>
       <span class="right-header"><a href="#">Log In</a></span>
       <span class="right-header"><a href="#">Sign Up</a></span>
-    <% #end %>
+    <% end %>
 </header>
 
 <%= yield %>
