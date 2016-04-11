@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     current_player ||= Player.find(session[:player_id]) if session[:player_id]
   end
 
+  def logged_in?
+     session[:player_id] = current_player.id
+   end
+
   helper_method :current_player
 
 end
