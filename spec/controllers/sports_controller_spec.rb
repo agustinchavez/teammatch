@@ -2,7 +2,11 @@ require 'rails_helper'
 
 describe SportsController do
 
-  let(:sport) { FactoryGirl.create(:sport) }
+  before(:each) do
+    player = FactoryGirl.create(:player)
+    stub_current_player(player)
+    @sport = FactoryGirl.create(:sport)
+  end
 
   context '#new' do
 
@@ -13,14 +17,14 @@ describe SportsController do
 
     it 'creates a new sport' do
       get :new
-      expect(sport).to be_a_kind_of(Sport)
+      expect(@sport).to be_a_kind_of(Sport)
     end
   end
 
   context '#create' do
-    it 'creates an sport if params are valid ' do
+    it 'creates a sport if params are valid ' do
       expect {
-        post :create, sport: FactoryGirl.attributes_for(:sport)}.to change(Position, :count).by(1)
+        post :create, sport: FactoryGirl.attributes_for(:sport)}.to change(Sport, :count).by(1)
     end
   end
 
