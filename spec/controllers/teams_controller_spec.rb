@@ -6,6 +6,20 @@ describe TeamsController do
     @team = FactoryGirl.create(:team)
   end
 
+  context "#index" do
+
+    it 'is successful' do
+      get :index
+      expect(response).to be_success
+    end
+
+    it 'returns an array of teams' do
+      get :index
+      expect(@teams).to be_an(Array)
+    end
+
+  end
+
   context "#new" do
 
     it 'is successful' do
@@ -13,16 +27,16 @@ describe TeamsController do
       expect(response).to be_success
     end
 
-    xit 'creates a new player' do
+    it 'creates a new team' do
       get :new
-      expect(@player).to be_a_kind_of(Player)
+      expect(@team).to be_a(Team)
     end
 
   end
 
   context "#create" do
 
-    xit 'logs in a player' do
+    it 'logs in a player' do
       player_hash = {username: @player.username, email: @player.email, password: @player.password}
       post :create, player_hash
       expect(session[:player_id]).to eq @player.id

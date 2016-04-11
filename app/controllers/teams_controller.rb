@@ -1,7 +1,12 @@
 class TeamsController < ApplicationController
 
+  def index
+    @teams = Team.all
+  end
+
   def new
     @team = Team.new
+    render :new
   end
 
   def create
