@@ -1,7 +1,5 @@
 class PositionsController < ApplicationController
 
-  def index
-  end
 
   def new
     @position = Position.new
@@ -16,10 +14,10 @@ class PositionsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def destroy
+    @position = Position.find(params[:id])
+    @position.destroy
+    redirect_to root_path
   end
 
   private
