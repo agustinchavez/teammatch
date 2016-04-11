@@ -1,8 +1,7 @@
 FactoryGirl.define do
   factory :team do
-    team_name "MyString"
-info "MyText"
-admin_id 1
+    name { Faker::Book.title }
+    info { Faker::Hacker.say_something_smart }
+    admin_id {(FactoryGirl.create(:player)).id}
   end
-
 end
