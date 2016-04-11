@@ -16,7 +16,7 @@ class PositionsController < ApplicationController
   end
 
   def destroy
-    @player = Player.find(session[:player_id])
+    @player = current_player
     @position = Position.find(params[:id])
     @position.destroy
     redirect_to root_path
