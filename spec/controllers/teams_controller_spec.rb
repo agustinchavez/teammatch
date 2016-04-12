@@ -2,9 +2,8 @@ require 'rails_helper'
 
 describe TeamsController do
 
-  before(:each) do
-    @team = FactoryGirl.create(:team)
-  end
+  let(:team) {FactoryGirl.create(:team)}
+  let(:teams) {array = []; 5.times{array << FactoryGirl.create(:team)}; array}
 
   context "#index" do
 
@@ -15,7 +14,31 @@ describe TeamsController do
 
     it 'returns an array of teams' do
       get :index
-      expect(@teams).to be_an(Array)
+      expect(teams).to be_an(Array)
+    end
+
+    it 'renders index view' do
+      get :index
+      expect(response).to render_template("index")
+    end
+
+  end
+
+  context "#show" do
+
+    it 'is successful' do
+      get :show, id: team.id
+      expect(response).to be_success
+    end
+
+    it 'returns a team' do
+      get :show, id: team.id
+      expect(team).to be_a(Team)
+    end
+
+    it 'renders show view' do
+      get :show, id: team.id
+      expect(response).to render_template("show")
     end
 
   end
@@ -29,32 +52,32 @@ describe TeamsController do
 
     it 'creates a new team' do
       get :new
-      expect(@team).to be_a(Team)
+      expect(team).to be_a(Team)
     end
 
   end
 
   context "#create" do
 
-    it 'logs in a player' do
+    xit 'logs in a user' do
       player_hash = {username: @player.username, email: @player.email, password: @player.password}
       post :create, player_hash
       expect(session[:player_id]).to eq @player.id
     end
 
-     xit 'When player logs in, it redirects to homepage' do
+     xit 'redirects to home page when user logs in' do
       player_hash = {username: @player.username, email: @player.email, password: @player.password}
       post :create, player_hash
       expect(response).to redirect_to(root_path)
     end
 
-    xit 'does not log in an invalid player' do
+    xit 'does not log in an invalid user' do
       player_hash = {username: @player.username, email: @player.email, password: "incorrect"}
       post :create, player_hash
       expect(session[:player_id]).to eq nil
     end
 
-    xit 'When authentication fails, it redirects to login path' do
+    xit 'redirects to login path when authentication fails' do
       player_hash = {username: @player.username, email: @player.email, password: "incorrect"}
       post :create, player_hash
       expect(response).to redirect_to(login_path)
@@ -64,7 +87,7 @@ describe TeamsController do
 
   context "#destroy" do
 
-    xit 'logs out the player' do
+    xit 'logs out the user' do
       player_hash = {username: @player.username, email: @player.email, password: @player.password}
       post :create, player_hash
       get :destroy
