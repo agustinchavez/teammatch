@@ -1,5 +1,8 @@
 class WelcomeController < ApplicationController
+
   def index
+    @postions = Position.all
+    @sports = Sport.all
   end
 
   def search
