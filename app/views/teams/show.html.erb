@@ -1,7 +1,3 @@
-<% if current_player.id == @team.id %>
-  <h2 class="page-notice">Welcome back, <%= current_player.username %>!</h2>
-<% end %>
-
 <div class="inner-container">
   <div class="profile-picture"></div>
 
@@ -11,11 +7,11 @@
 
     <h3>Positions</h3>
     <div class="inner-container">
-    <% @team.players.each do |player| %>
-      <% player.positions.each do |position| %>
-       <div class="tag"><%= position.name %></div>
-    <% end %>
-    <% end %>
+      <% @team.players.each do |player| %>
+        <% player.positions.each do |position| %>
+         <div class="tag"><%= position.name %></div>
+      <% end %>
+      <% end %>
     </div>
   </div>
 
