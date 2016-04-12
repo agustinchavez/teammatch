@@ -6,6 +6,7 @@
   get 'logout' => 'sessions#destroy, as: :logout'
 
   resources :teams
+  get 'teamss/search', :to => 'teams#search'
   resources :sports, only: [:create, :new, :show, :destroy]
   resources :positions, only: [:create, :new, :show, :destroy]
   resources :medium
