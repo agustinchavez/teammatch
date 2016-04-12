@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-     session[:player_id] = current_player.id
+     !!current_player
    end
 
-  helper_method :current_player
+  helper_method :current_player, :logged_in?
 
 end
