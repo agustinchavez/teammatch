@@ -21,9 +21,11 @@ cobra_kai.players << agustin
 cobra_kai.players << natalie
 cobra_kai.players << ana
 
+sport_array = %w(soccer football basketball baseball hockey softball ultimate_frisbee rugby cricket)
+
 players.each do |player|
   player.positions.create(name: Faker::Team.creature)
-  player.sports.create(name: Faker::Book.title)
+  player.sports.create(name: sport_array.sample)
   player.media.create(content: Faker::Lorem.paragraph(1), link: Faker::Internet.url)
 end
 
