@@ -1,0 +1,51 @@
+<% if current_player.id == @team.id %>
+  <h2 class="page-notice">Welcome back, <%= current_player.username %>!</h2>
+<% end %>
+
+<div class="inner-container">
+  <div class="profile-picture"></div>
+
+  <div class="inner-container">
+    <h3>Team name:</h3>
+      <div class="inner-container"><%= @team.team_name %></div>
+
+    <h3>Positions</h3>
+    <div class="inner-container">
+    <% @team.players.each do |player| %>
+      <% player.positions.each do |position| %>
+       <div class="tag"><%= position.name %></div>
+    <% end %>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="inner-container">
+    <h3>Sports</h3>
+    <% @team.sports.each do |sport| %>
+      <div class="tag"><%= sport.name %></div>
+    <% end %>
+  </div>
+
+<div class="inner-container">
+    <h3>Teammates</h3>
+    <% @team.players.each do |player| %>
+      <div class="tag"><%= player.username %></div>
+    <% end %>
+  </div>
+
+  <div class="inner-container">
+    <h3>Contact:</h3>
+    <%= @team.admin.username %>:<br>
+    <%= @team.admin.email %><br>
+    <%= @team.admin.phone %>
+  </div>
+
+  <div class="inner-container">
+    <h3>Info</h3>
+    <p><%= @team.info %></p>
+  </div>
+</div>
+
+<div class="buttons">
+  <%= button_to "Check us out!", root_path, method: :get, class: "button" %>
+</div>
