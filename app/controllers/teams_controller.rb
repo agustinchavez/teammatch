@@ -13,6 +13,8 @@ class TeamsController < ApplicationController
   end
 
   def create
+    @player = current_player
+    @team = @player.teams.create(team_params)
   end
 
   def edit
@@ -27,7 +29,7 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    team_params = params.require(:team).permit(:name, :info, :admin_id)
+    team_params = params.require(:team).permit(:team_name, :info, :admin_id)
   end
 
 end

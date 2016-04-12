@@ -4,6 +4,7 @@ describe TeamsController do
 
   let(:team) {FactoryGirl.create(:team)}
   let(:teams) {array = []; 5.times{array << FactoryGirl.create(:team)}; array}
+  let(:player) {FactoryGirl.create(:player)}
 
   context "#index" do
 
@@ -55,14 +56,19 @@ describe TeamsController do
       expect(team).to be_a(Team)
     end
 
+    it 'renders new view' do
+       get :new
+       expect(response).to render_template("new")
+     end
+
   end
 
   context "#create" do
 
-    xit 'logs in a user' do
-      player_hash = {username: @player.username, email: @player.email, password: @player.password}
-      post :create, player_hash
-      expect(session[:player_id]).to eq @player.id
+    it 'creates a team' do
+      team_params = {team_name: team.team_name, info: team.info, admin_id: player.id}
+      post :create, team_params
+      expect(@team).to be_a(Team)
     end
 
      xit 'redirects to home page when user logs in' do

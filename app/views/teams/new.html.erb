@@ -1,1 +1,9 @@
-<h1>New Team</h1>
+<%= form_for @team do |f| %>
+  <%= f.label :team_name %>:
+  <%= f.text_field :team_name %><br />
+
+  <%= f.label :info %>:
+  <%= f.text_field :info %><br />
+
+  <%= f.submit %>
+<% end %>
