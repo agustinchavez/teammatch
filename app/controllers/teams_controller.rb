@@ -13,8 +13,13 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @player = current_player
-    @team = @player.teams.create(team_params)
+    @player = urrent_player.teams.new(team_params)
+    if @team.save
+       redirect_to @team
+     else
+       status 400
+       render :new
+     end
   end
 
   def edit
