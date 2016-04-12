@@ -1,0 +1,15 @@
+<div>Choose a Position:</div>
+
+<%= form_tag do%>
+  <% @positions.uniq.each do |position_obj| %>
+  <%= radio_button_tag(:position, "#{position_obj.name}") %>
+  <%= label_tag("#{position_obj.name}") %>
+<% end %>
+<br>
+<div>Choose an Sport:</div>
+  <% @sports.uniq.each do |sport_obj| %>
+  <%= radio_button_tag(:sport, "#{sport_obj.name}") %>
+  <%= label_tag("#{sport_obj.name}") %>
+<% end %>
+<%= submit_tag("Search") %>
+<% end %>

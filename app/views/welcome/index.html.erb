@@ -1,23 +1,8 @@
-<div>
-  <span>I am looking for</span>
-    <select name ="looking_for">
-      <option value="athletes">athletes</option>
-      <option value="teams">teams</option>
-    </select>
-    <% if looking_for.value == athletes%>
-  <span>who's position is:</span>
-    <select name="positions">
-    <select name="positionss">
-    <% @positions.uniq.each do |position| %>
-      <option value="<%= position.name %>"><%= poisition.name %></option>
-      <% end %>
-      <% end %>
-      </select>
-      <span>that play</span>
-      <select name="sport">
-        <% @sports.uniq.each do |sport| %>
-      <option value="<%= sport.name%>"><%= sport.name %></option>
-    <% end %>
-    </select>
-
-</div>
+<span>Who Are You Looking For?</span>
+<%= form_tag("/search", method: "post") do %>
+<%= radio_button_tag(:type, "athletes") %>
+<%= label_tag("Athletes") %>
+<%= radio_button_tag(:type, "team") %>
+<%= label_tag("Teams") %>
+<%= submit_tag("Search") %>
+<% end %>

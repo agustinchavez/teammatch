@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
+  Rails.application.routes.draw do
   root 'welcome#index'
+  post '/search', :to => 'welcome#search'
 
   get 'register' => 'players#new, as: :register'
   get 'logout' => 'sessions#destroy, as: :logout'
