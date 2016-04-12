@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+
+.profile-picture {
+  border-radius: 50%;
+  width: 8em;
+  height: 8em;
+  border: 2px solid black;
+  background-color: #257011;
+  float: center;
+}
+
+.page-notice {
+  background-color: #2D7996;
+  text-align: center;
+
+}
+
+.container {
+  border: 2px solid black;
+  padding: 1em;
+}
+
+.inner-container {
+  border: 2px solid black;
+  padding: 2em;
+}
+
+.button {
+  background-color: #BF6D15;
+  padding: 1em;
+  border-radius: .5em;
+}
