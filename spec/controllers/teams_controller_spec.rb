@@ -6,6 +6,10 @@ describe TeamsController do
   let(:teams) {array = []; 5.times{array << FactoryGirl.create(:team)}; array}
   let(:player) {FactoryGirl.create(:player)}
 
+  before(:each) do
+    stub_current_player(player)
+  end
+
   context "#index" do
 
     it 'is successful' do
@@ -66,9 +70,10 @@ describe TeamsController do
   context "#create" do
 
     it 'creates a team' do
-      team_params = {team_name: team.team_name, info: team.info, admin_id: player.id}
+      team_params = {team: {team_name: "Chivas", info: "Champions of the world", admin_id: 1}}
       post :create, team_params
-      expect(@team).to be_a(Team)
+      created_team = Team.find_by(team_name: "Chivas")
+      expect(response).to redirect_to(team_path(created_team))
     end
 
      xit 'redirects to home page when user logs in' do
