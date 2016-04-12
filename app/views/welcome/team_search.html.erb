@@ -1,6 +1,6 @@
 <span>What Sport Are You Looking For?</span>
 
-<%= form_tag do%>
+<%= form_tag(teams_path, method: "get") do%>
   <% @sports.uniq.each do |sport_obj| %>
   <%= radio_button_tag(:sport, "#{sport_obj.name}") %>
   <%= label_tag("#{sport_obj.name}") %>
