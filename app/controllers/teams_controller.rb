@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
+    # @team = Team.find(params[:id])
   end
 
   def new
@@ -32,6 +32,7 @@ class TeamsController < ApplicationController
   end
 
   def search
+    render :teams_search_path
   end
 
   private
