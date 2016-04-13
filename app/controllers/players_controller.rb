@@ -11,10 +11,18 @@ class PlayersController < ApplicationController
   end
 
   def edit
+    @player = Player.find(params[:id])
   end
 
   def update
-  end
+     @player = Player.find(params[:id])
+     if @player
+       @player.update_attributes(player_params)
+       redirect_to player_path(@player)
+     else
+       render :edit
+     end
+   end
 
   def destroy
   end

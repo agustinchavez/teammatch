@@ -1,0 +1,26 @@
+<div class="container">
+<h2>Update My Profile</h2>
+
+<h2>Update your information below:</h2>
+<%= form_for @player, url: player_path(@player), method: :put do |f| %>
+
+  <p><%= f.label :username %></p>
+  <p><%= f.text_field :username %></p>
+
+  <p><%= f.label :email %></p>
+  <p><%= f.text_area :email %></p>
+
+  <p><%= f.label :username %></p>
+  <p><%= f.text_field :username %></p>
+
+  <p><%= f.label :sports %></p>
+  <p><%= f.text_field :sports %></p>
+
+  <p><%= f.label :positions %></p>
+  <p><%= f.text_field :positions %></p>
+
+  <%= f.submit "Update", class: "button" %>
+<% end %>
+</div>
+
+<p><%= link_to "Delete Me", player_path(@player), method: :delete %></p></div>
