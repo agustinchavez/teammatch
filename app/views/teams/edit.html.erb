@@ -7,14 +7,12 @@
   <p><%= f.label :team_name %></p>
   <p><%= f.text_field :team_name %></p>
 
-  <p><%= f.label :sports %></p>
-  <p><%= f.text_field :sports %></p>
 
-  <p><%= f.label :media %></p>
-  <p><%= f.text_field :media %></p>
+  <p><%= f.label :info %></p>
+  <p><%= f.text_field :info %></p>
 
-  <%= f.submit "Update", class: "button" %>
+  <%= f.submit "Update my Team", class: "button" %>
 <% end %>
 </div>
 
-<p><%= link_to "Delete my Question", team_path(@team), method: :delete %></p></div>
+<p><%= link_to "Delete my Team", team_path(@team), method: :delete %></p></div>
