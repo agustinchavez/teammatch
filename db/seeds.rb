@@ -58,6 +58,29 @@ lou = Player.create(username: "Lou Gehrig", password: "password", email: "lou@gm
 jackie = Player.create(username: "Jackie Robinson", password: "password", email: "jackie@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
 
+soccer = Sport.create(name: "Soccer")
+basketball = Sport.create(name: "Basketball")
+baseball = Sport.create(name: "Baseball")
+softball = Sport.create(name: "Softball")
+football = Sport.create(name: "Football")
+rugby = Sport.create(name: "Rugby")
+
+forward = Position.create(name: "Forward")
+midfielder = Position.create(name: "Midfielder")
+defender = Position.create(name: "Defender")
+goalkeeper = Position.create(name: "Goalkeeper")
+shooting_guard = Position.create(name: "Shooting Guard")
+center = Position.create(name: "Center")
+point_guard = Position.create(name: "Point Guard")
+quarterback = Position.create(name: "Quarterback")
+linebacker = Position.create(name: "Linebacker")
+pitcher = Position.create(name: "Pitcher")
+outfielder = Position.create(name: "Outfielder")
+short_stop = Position.create(name: "Short Stop")
+first_base = Position.create(name: "First Base")
+second_base = Position.create(name: "Second Base")
+left_winger = Position.create(name: "Left Winger")
+
 forwards = [cristiano, lionel, wayne, javier, omar, pele, mia, larry]
 midfielders = [zizou, david, ramon]
 defenders = [rio]
@@ -84,83 +107,83 @@ football_player = [joe, ray]
 admins = [javier, michael, derek, ray, mia, jennie]
 
 soccer_players.each do |s|
-  s.sports.create(name: "Soccer")
+  s.sports << soccer
 end
 
 basketballers.each do |b|
-  b.sports.create(name: "Basketball")
+  b.sports << basketball
 end
 
 baseballers.each do |b|
-  b.sports.create(name: "Baseball")
+  b.sports << baseball
 end
 
 softballers.each do |s|
-  s.sports.create(name: "Softball")
+  s.sports << softball
 end
 
 rugby_players.each do |r|
-  r.sports.create(name: "Rugby")
+  r.sports << rugby
 end
 
 football_player.each do |f|
-  f.sports.create(name: "Football")
+  f.sports << football
 end
 
 forwards.each do |f|
-  f.positions.create(name: "Forward")
+  f.positions << forward
 end
 
 midfielders.each do |m|
-  m.positions.create(name: "Midfielder")
+  m.positions << midfielder
 end
 
 defenders.each do |d|
-  d.positions.create(name: "Defender")
+  d.positions << defender
 end
 
 goalkeepers.each do |k|
-  k.positions.create(name: "Goalkeeper")
+  k.positions << goalkeeper
 end
 
 shooting_guards.each do |s|
-  s.positions.create(name: "Shooting Guard")
+  s.positions << shooting_guard
 end
 
 point_guards.each do |p|
-  p.positions.create(name: "Point Guard")
+  p.positions << point_guard
 end
 
 quarterbacks.each do |q|
-  q.positions.create(name: "Quarterback")
+  q.positions << quarterback
 end
 
 linebackers.each do |s|
-  s.positions.create(name: "Linebacker")
+  s.positions << linebacker
 end
 
 pichers.each do |s|
-  s.positions.create(name: "Pitcher")
+  s.positions << pitcher
 end
 
 outfielders.each do |s|
-  s.positions.create(name: "Outfielder")
+  s.positions << outfielder
 end
 
 short_stops.each do |s|
-  s.positions.create(name: "Short Stop")
+  s.positions << short_stop
 end
 
 first_bases.each do |s|
-  s.positions.create(name: "First Base")
+  s.positions << first_base
 end
 
 second_bases.each do |s|
-  s.positions.create(name: "Second Base")
+  s.positions << second_base
 end
 
 left_wingers.each do |s|
-  s.positions.create(name: "Left Winger")
+  s.positions << left_winger
 end
 
 cobra_kai_fc = Team.create(name: "Cobra Kai Fc", info: Faker::Lorem.paragraph(1), admin_id: javier.id)
