@@ -1,0 +1,9 @@
+<h4>Your results</h4>
+ <div>
+   <h4>Athletes</h4>
+   <ol>
+     <% @athletes.each do |athlete| %>
+     <li><%= athlete.username %></li>
+     <% end %>
+   </ol>
+ </div>

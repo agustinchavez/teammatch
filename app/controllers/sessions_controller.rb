@@ -9,8 +9,7 @@ class SessionsController < ApplicationController
     player.username = auth[:info][:name]
     if player.new_record?
       player.password = SecureRandom.uuid()
-      player.phone = '122345689'
-      byebug
+      player.phone = '123345689'
       player.save!
     end
     session[:player_id] = player.id
