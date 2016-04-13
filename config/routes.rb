@@ -13,7 +13,7 @@
   resources :players
 
   get '/login', :to => 'sessions#new', as: :login
-  get 'auth/:provider' => 'sessions#new', as: :ouath_login
+  get 'auth/:provider', :to => 'sessions#new', as: :oauth_login
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/failure', to: 'sessions#failure'
 end

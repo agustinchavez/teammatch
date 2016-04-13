@@ -7,9 +7,17 @@
   <p><%= f.label :team_name %></p>
   <p><%= f.text_field :team_name %></p>
 
-
   <p><%= f.label :info %></p>
   <p><%= f.text_field :info %></p>
+
+  <p><%= f.label :admin %></p>
+  <p><%= f.text_field :admin %></p>
+
+  <p><%= f.label :positions %></p>
+  <p><%= f.text_field :team[:positions] %></p>
+
+  <p><%= f.label :members %></p>
+  <p><%= f.text_field :team[:members] %></p>
 
   <%= f.submit "Update my Team", class: "button" %>
 <% end %>

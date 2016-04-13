@@ -10,14 +10,17 @@
   <p><%= f.label :email %></p>
   <p><%= f.text_area :email %></p>
 
+  <p><%= f.label :phone %></p>
+  <p><%= f.text_field :phone %></p>
+
   <p><%= f.label :sports %></p>
-  <p><%= f.text_field :sports %></p>
+  <p><%= f.text_field :sports, :value => "" %></p>
 
   <p><%= f.label :positions %></p>
-  <p><%= f.text_field :positions %></p>
+  <p><%= f.text_field :positions, :value => "" %></p>
 
   <%= f.submit "Update", class: "button" %>
 <% end %>
 </div>
 
-<p><%= link_to "Delete Me", player_path(@player), method: :delete %></p></div>
+<p><%= link_to "Delete Me", player_path(@player.id), method: :delete %></p></div>
