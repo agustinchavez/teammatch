@@ -202,31 +202,31 @@ positions.map{|e| e.capitalize }
 cobra_kai_fc.players << javier
 cobra_kai_fc.players << cristiano
 cobra_kai_fc.players << wayne
-cobra_kai_fc.sports.create(name: "Soccer")
+cobra_kai_fc.sports << soccer
 
 chicago_phil_harmonics.players << karim
 chicago_phil_harmonics.players << michael
 chicago_phil_harmonics.players << magic
-chicago_phil_harmonics.sports.create(name: "Basketball")
+chicago_phil_harmonics.sports << basketball
 
 south_side_sluggers.players << ray
 south_side_sluggers.players << joe
-south_side_sluggers.sports.create(name: "Football")
+south_side_sluggers.sports << football
 
 highway_hurricanes.players << derek
 highway_hurricanes.players << fernando
 highway_hurricanes.players << babe
 highway_hurricanes.players << sammy
-highway_hurricanes.sports.create(name: "Baseball")
+highway_hurricanes.sports << baseball
 
 ruby_ruby_ruby_ruby.players << jennie
 ruby_ruby_ruby_ruby.players << lou
-ruby_ruby_ruby_ruby.sports .create(name: "Football")
+ruby_ruby_ruby_ruby.sports << softball
 
 latino_heat.players << mia
 latino_heat.players << pele
 latino_heat.players << omar
-latino_heat.sports.create(name: "Soccer")
+latino_heat.sports << soccer
 
 
 

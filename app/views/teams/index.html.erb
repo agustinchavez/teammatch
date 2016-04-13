@@ -7,11 +7,18 @@
     </colgroup>
     <tr>
     <th style="background-color:grey">Team: </th>
+    <th style="background-color:grey">Sport: </th>
+    <th style="background-color:grey">Members: </th>
     <th style="background-color:grey">Info: </th>
     </tr>
     <% @teams.each do |team| %>
     <tr>
       <td align="center" style="height: 30px"><%= team.team_name %></td>
+      <td align="center"><%= team.sports.first.name %></td>
+      <td align="center">
+        <% team.players.each do |player| %>
+          <%= player.username %>,
+        <% end %>
       <td><%= team.info %></td>
     </tr>
     <% end %>
