@@ -1,9 +1,10 @@
 <div id="athlete-positions-search">
-  <h4>Choose a Position:</h4>
+  <% if !@athletes.empty? %>
+  <h4>I want my athlete to play this/these positions:</h4>
   <div>
-   <%= form_tag("players/search", method: "post") do %>
-      <% @positions.each do |position_obj| %>
-      <%= check_box_tag("[Position][#{position_obj.id}]", "#{position_obj.name}") %>
+    <%= form_tag("players/search", method: "post") do %>
+    <% @players.each do |position_obj| %>
+    <%= check_box_tag("[Position][#{position_obj.id}]", "#{position_obj.name}") %>
       <%= label_tag("#{position_obj.name}") %>
       <%= hidden_field_tag :group, "Athletes" %>
       <%= hidden_field_tag :group, "Athletes" %>
@@ -20,5 +21,13 @@
     <% end %>
   </ol>
 </div>
+
+<div>
+  <%= link_to "Home", root_path %>
+</div>
+  <% else %>
+    <h4>Sorry, we can't find what you're looking for.</h4>
+    <%= link_to "Home", root_path %>
+  <% end %>
 
 </div>
