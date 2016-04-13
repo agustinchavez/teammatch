@@ -1,5 +1,5 @@
 class Sport < ActiveRecord::Base
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
   has_many :team_sports
   has_many :teams, through: :team_sports

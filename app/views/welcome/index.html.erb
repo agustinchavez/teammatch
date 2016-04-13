@@ -1,8 +1,36 @@
-<span>Who Are You Looking For?</span>
-<%= form_tag("/search", method: "post") do %>
-<%= radio_button_tag(:type, "athletes") %>
-<%= label_tag("Athletes") %>
-<%= radio_button_tag(:type, "team") %>
-<%= label_tag("Teams") %>
-<%= submit_tag("Search") %>
-<% end %>
+<div class="original-homepage">
+
+  <span>Who Are You Searching For?</span>
+
+  <div id="athlete-team-search">
+    <%= form_tag("/search", method: "post") do %>
+      <%= radio_button_tag(:group, "Athletes") %>
+      <%= label_tag(:group, "Athletes") %>
+      <%= radio_button_tag(:group, "Teams") %>
+      <%= label_tag(:group, "Teams") %>
+      <%= submit_tag("Search") %>
+    <% end %>
+  </div>
+
+  <div id="search-results">
+
+    <div>
+      <h4>Athletes</h4>
+      <ol>
+      <% @athletes.each do |athlete| %>
+        <li><%= athlete.username %></li>
+      <% end %>
+      </ol>
+    </div>
+
+    <div>
+      <h4>Teams</h4>
+       <ol>
+      <% @teams.each do |team| %>
+        <li><%= team.team_name %></li>
+      <% end %>
+      </ol>
+    </div>
+
+  </div>
+</div>

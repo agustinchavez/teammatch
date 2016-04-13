@@ -1,0 +1,22 @@
+<div id="athlete-search-sport">
+  <h4>Choose an Genre:</h4>
+  <div>
+    <%= form_tag("teams/search", method: "get") do %>
+    <% @sports.uniq.each do |sport_obj| %>
+    <%= radio_button_tag(:genre, "#{sport_obj.name}") %>
+    <%= label_tag("#{sport_obj.name}") %>
+    <% end %>
+    <%= submit_tag("Search") %>
+    <% end %>
+  </div>
+
+  <div>
+    <h4>Athletes</h4>
+    <ol>
+      <% @athletes.each do |athlete| %>
+      <li><%= athlete.username %></li>
+      <% end %>
+    </ol>
+  </div>
+
+</div>
