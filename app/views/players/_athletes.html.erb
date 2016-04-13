@@ -1,11 +1,12 @@
-<div id="search-sport">
-  <h4>Choose a Sport:</h4>
+<div id="athlete-search-sport">
+  <h4>I want my athlete to play this/these positions:</h4>
   <div>
-    <%= form_tag("teams/search", method: "get") do %>
-    <% @sports.uniq.each do |sport_obj| %>
-    <%= radio_button_tag(:genre, "#{sport_obj.name}") %>
+    <%= form_tag("players/search", method: "post") do %>
+    <% @sports.each do |sport_obj| %>
+    <%= check_box_tag("[Sport][#{sport_obj.id}]", "#{sport_obj.name}") %>
     <%= label_tag("#{sport_obj.name}") %>
     <% end %>
+    <%= hidden_field_tag :group, "Athletes" %>
     <%= submit_tag("Search") %>
     <% end %>
   </div>

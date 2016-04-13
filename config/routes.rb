@@ -11,6 +11,7 @@
   resources :positions, only: [:create, :new, :show, :destroy]
   resources :medium
   resources :players
+  post 'players/search', :to => 'players#search'
 
   get '/login', :to => 'sessions#new', as: :login
   get 'auth/:provider', :to => 'sessions#new', as: :oauth_login

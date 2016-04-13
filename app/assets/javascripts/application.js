@@ -14,31 +14,3 @@
 //= require jquery_ujs
 //= require_tree .
 
-$(document).ready(function(){
-  $('#athlete-team-search').on("submit", function(event){
-    event.preventDefault();
-    $.ajax({
-      method: "post",
-      url: "/search",
-      data: $(event.target).serialize()
-    })
-    .done(function(response){
-      console.log(response)
-      $('.original-homepage').replaceWith(response)
-      });
-    });
-
-  $('.homepage').on("submit", "#team-search-sport", function(event){
-    event.preventDefault();
-    $.ajax({
-      method: "post",
-      url: "teams/search",
-      data: $(event.target).serialize()
-    })
-    .done(function(response){
-      console.log(response)
-      $('#team-search-sport').replaceWith(response)
-      });
-    });
-
-  });

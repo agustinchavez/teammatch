@@ -1,13 +1,16 @@
-<div id="search-position">
+<div id="athlete-positions-search">
   <h4>Choose a Position:</h4>
   <div>
-   <%= form_tag do%>
-   <% @positions.uniq.each do |position_obj| %>
-   <%= radio_button_tag(:instrument, "#{position_obj.name}") %>
-   <%= label_tag("#{position_obj.name}") %>
-   <%= hidden_field_tag :group, "Athletes" %>
-   <% end %>
- </div>
+   <%= form_tag("players/search", method: "post") do %>
+      <% @positions.each do |position_obj| %>
+      <%= check_box_tag("[Position][#{position_obj.id}]", "#{position_obj.name}") %>
+      <%= label_tag("#{position_obj.name}") %>
+      <%= hidden_field_tag :group, "Athletes" %>
+      <%= hidden_field_tag :group, "Athletes" %>
+    <% end %>
+    <%= submit_tag("Search") %>
+    <% end %>
+  </div>
 
  <div>
   <h4>Athletes</h4>
