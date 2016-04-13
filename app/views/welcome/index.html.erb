@@ -1,7 +1,9 @@
 <div class="homepage">
   <div class="original-homepage">
 
-    <span>Who Are You Searching For?</span>
+    <br>
+    <div>Who Are You Searching For?</div>
+    <br>
 
     <div id="athlete-team-search">
       <%= form_tag("/search", method: "post") do %>
@@ -9,6 +11,7 @@
         <%= label_tag(:group, "Athletes") %>
         <%= radio_button_tag(:group, "Teams") %>
         <%= label_tag(:group, "Teams") %>
+        <br>
         <%= submit_tag("Search") %>
       <% end %>
     </div>
