@@ -10,13 +10,13 @@
   <header>
     <a href="/">TeamMatch</a>
     <% if logged_in? %>
-      <%= link_to current_player.username %>
+      <a href="#"><%= current_player.username %></a>
       <%= link_to "Log Out", logout_path %>
     <% else %>
       <%= link_to "Sign Up" %>
-      <%= link_to 'Google', ouath_login_path(:google_oauth2) %>
-      <%= link_to 'Twitter', ouath_login_path(:twitter) %>
-      <%= link_to 'Soundcloud', ouath_login_path(:soundcloud) %>
+      <%= link_to 'Google', oauth_login_path(:google_oauth2) %>
+      <%= link_to 'Twitter', oauth_login_path(:twitter) %>
+      <%= link_to 'Soundcloud', oauth_login_path(:soundcloud) %>
     <% end %>
   </header>
 
