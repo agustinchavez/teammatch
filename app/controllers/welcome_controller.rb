@@ -6,12 +6,14 @@ class WelcomeController < ApplicationController
   end
 
   def search
-    @postions = Position.all
-    @sports = Sport.all
-    if params[:type] == 'athletes'
-      render :'athletes_search'
+    if params[:group] == 'Athletes'
+      @athletes = Player.all
+      @sports = Sport.all
+      render "players/_athletes-sport", layout: false
     else
-      render :'team_search'
+      @teams = Team.all
+      @sports = Sport.all
+      render "teams/_teams-sport", layout: false
     end
   end
 end

@@ -6,6 +6,10 @@ class SportsController < ApplicationController
 
   def create
     @player = current_player
+    @sports = Sport.all
+    if @sports.any? {|sport| sport.name = params[:sport][:name]}
+      redirect_to root_path
+    end
     @sport = @player.sports.new(sport_params)
     if @sport.save
       redirect_to root_path
