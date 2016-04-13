@@ -1,12 +1,13 @@
 <div id="team-search-sport">
-  <h4>What Sport Are You Looking For?</h4>
+  <h4>What Sport Would You Like The Team To Play?</h4>
 
   <div>
-    <%= form_tag("teams/search", method: "get") do %>
+    <%= form_tag("teams/search", method: "post") do %>
     <% @sports.uniq.each do |sport_obj| %>
-    <%= radio_button_tag(:genre, "#{sport_obj.name}") %>
+    <%= check_box_tag("[Sport][#{sport_obj.id}]", "#{sport_obj.name}") %>
     <%= label_tag("#{sport_obj.name}") %>
   <% end %>
+  <%= hidden_field_tag :group, "Teams" %>
   <%= submit_tag("Search") %>
   <% end %>
   </div>
