@@ -1,9 +1,16 @@
-<h4>Your results</h4>
- <div>
-   <h4>Athletes</h4>
-   <ol>
-     <% @athletes.each do |athlete| %>
-     <li><%= athlete.username %></li>
-     <% end %>
-   </ol>
- </div>
+<% if !@athletes.empty? %>
+<h4><%= @athletes.count  %> <%= @athletes.count > 1 ? "results:" : "result:" %></h4>
+  <div>
+    <h4>Athletes</h4>
+    <ol>
+      <% @athletes.each do |athlete| %>
+      <li><%= athlete.username %></li>
+      <% end %>
+    </ol>
+  </div>
+  <div>
+    <%= link_to "Home", root_path %>
+  </div>
+<% else %>
+  <h4>Sorry, we can't find what you're looking for.</h4>
+<% end %>
