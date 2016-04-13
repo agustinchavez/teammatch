@@ -1,4 +1,5 @@
 class Player < ActiveRecord::Base
+  has_secure_password
 
   validates :username, presence: true
 
@@ -10,9 +11,5 @@ class Player < ActiveRecord::Base
   has_many :teams, through: :payer_teams
   has_many :media, as: :showable
 
-
-  def self.create_with_omniauth(auth)
-     create(username: auth[:info][:name])
-   end
 
 end
