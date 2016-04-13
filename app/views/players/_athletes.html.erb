@@ -1,5 +1,5 @@
-<div id="athlete-search-sport">
-  <h4>Choose an Genre:</h4>
+<div id="search-sport">
+  <h4>Choose a Sport:</h4>
   <div>
     <%= form_tag("teams/search", method: "get") do %>
     <% @sports.uniq.each do |sport_obj| %>

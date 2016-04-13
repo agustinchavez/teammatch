@@ -28,4 +28,17 @@ $(document).ready(function(){
       });
     });
 
+  $('.homepage').on("submit", "#team-search-sport", function(event){
+    event.preventDefault();
+    $.ajax({
+      method: "post",
+      url: "teams/search",
+      data: $(event.target).serialize()
+    })
+    .done(function(response){
+      console.log(response)
+      $('#team-search-sport').replaceWith(response)
+      });
+    });
+
   });

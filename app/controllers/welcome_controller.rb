@@ -7,13 +7,19 @@ class WelcomeController < ApplicationController
 
   def search
     if params[:group] == 'Athletes'
-      @athletes = Player.all
+      @athletes = Athlete.all
       @sports = Sport.all
-      render "players/_athletes-sport", layout: false
-    else
+      render "players/_athletes", layout: false
+    elsif params[:sport] && params[:group] == "Teams"
+      @sport = Sport.find_by(name: params[:sport])
+      @teams = @sport.teams
+      binding.pry
+      render "teams/_teams-sorted", layout: false
+    elsif params[:group] == 'Teams'
       @teams = Team.all
       @sports = Sport.all
-      render "teams/_teams-sport", layout: false
-    end
+      render "teams/_teams", layout: false
+    elsif params[:sport]
   end
+end
 end

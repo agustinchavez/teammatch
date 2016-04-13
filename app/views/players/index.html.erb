@@ -1,0 +1,33 @@
+<div class="container">
+  <h1 align="center">List of Athletes</h1>
+  <table border="1" style="width:85%" align="center">
+    <tr>
+    <th style="background-color:grey">Name: </th>
+    <th style="background-color:grey">Info: </th>
+    <th style="background-color:grey">Address: </th>
+    <th style="background-color:grey">Phone: </th>
+    <th style="background-color:grey">Email: </th>
+    <th style="background-color:grey">Sports: </th>
+    <th style="background-color:grey">Positions: </th>
+    </tr>
+    <% @players.each do |player| %>
+    <tr>
+      <td><%= player.username %></td>
+      <td><%= player.info %></td>
+      <td><%= player.address %>, <%= player.city %>, <%= player.state %> <%= player.zip %></td>
+      <td><%= player.phone %></td>
+      <td><%= player.email %></td>
+        <td>
+        <% player.sports.each do |sport| %>
+        <%= sport.name %>
+        <% end %>
+        </td>
+        <td>
+        <% player.positions.each do |position| %>
+        <%= position.name %>
+        <% end %>
+        </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

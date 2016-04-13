@@ -44,7 +44,13 @@ class TeamsController < ApplicationController
   end
 
   def search
-    render :teams_search_path
+    sport_ids = params["Sport"].map {|e| e[0].to_i}
+    sports = Sport.find(sport_ids)
+    sports_with_teams = sports.select {|sport| !sport.teams.empty?}
+    teams_from_sport = sports_with_teams.map {|sport| sport.teams}.flatten
+    team_ids = teams_from_sport.map {sport| sport.id}
+    @teams = Team.find(team_ids)
+    render "teams/_teams-sorted", layout: false
   end
 
   private
