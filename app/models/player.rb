@@ -1,8 +1,7 @@
 class Player < ActiveRecord::Base
   has_secure_password
 
-  validates :username, presence: true, uniqueness: true
-  # validates :password_digest, :phone, presence: true
+  validates :username, presence: true
 
   has_many :player_sports
   has_many :player_positions
