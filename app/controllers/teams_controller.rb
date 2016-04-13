@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    # @team = Team.find(params[:id])
+     @team = Team.find(params[:id])
   end
 
   def new
@@ -23,12 +23,24 @@ class TeamsController < ApplicationController
   end
 
   def edit
+    @team = Team.find(params[:id])
   end
 
   def update
+    @team = Team.find(params[:id])
+    if @team
+      @team.update_attributes(team_params)
+      redirect_to team_path(@team)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    if @team.destroy
+      redirect_to root_path
+    else
+      @errors = @team.errors.full_messages
   end
 
   def search
