@@ -3,6 +3,8 @@ class WelcomeController < ApplicationController
   def index
     @postions = Position.all
     @sports = Sport.all
+    @athletes = Player.all
+    @teams = Team.all
   end
 
   def search

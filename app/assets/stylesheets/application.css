@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation_and_overrides
+
  */
 
 .profile-picture {
@@ -43,4 +45,25 @@
   background-color: #BF6D15;
   padding: 1em;
   border-radius: .5em;
+}
+
+.original-homepage {
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+#athlete-search-sport {
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+#athletes-positions-search {
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+
+.jumbotron {
+  padding-left: 3em;
+  padding-right: 3em;
 }
