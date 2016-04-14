@@ -1,34 +1,44 @@
 <div id="athlete-positions-search">
   <% if !@athletes.empty? %>
-  <h4>I want my athlete to play this/these positions:</h4>
-  <div>
-    <%= form_tag("players/search", method: "post") do %>
-    <% @players.each do |position_obj| %>
-    <%= check_box_tag("[Position][#{position_obj.id}]", "#{position_obj.name}") %>
-      <%= label_tag("#{position_obj.name}") %>
-      <%= hidden_field_tag :group, "Athletes" %>
-      <%= hidden_field_tag :group, "Athletes" %>
-    <% end %>
-    <br>
-    <%= submit_tag("Search") %>
-    <% end %>
-  </div>
+    <div class="jumbotron text-center">
+      <h1>I want my athlete to play this/these positions:</h1>
+      <div>
+        <%= form_tag("players/search", method: "post") do %>
+          <% @positions.each do |position_obj| %>
+          <%= check_box_tag("[Position][#{position_obj.id}]", "#{position_obj.name}") %>
+          <%= label_tag("#{position_obj.name}", nil, :class => "h2") %>
+          <%= hidden_field_tag :athletes, @athletes_ids %>
+        <% end %>
+        <br>
+        <%= submit_tag("Search", :class => "btn btn-primary btn-lg") %>
+        <% end %>
+      </div>
+    </div>
 
- <div>
-  <h4>Athletes</h4>
-  <ol>
-    <% @athelets.each do |athlete| %>
-    <li><%= athlete.username %></li>
-    <% end %>
-  </ol>
-</div>
+    <div class="alert alert-success" role="alert">
+      <h2 class="text-center"><%= @athletes.count  %> <%= @athletes.count > 1 ? "results:" : "result:" %></h2>
+    </div>
 
-<div>
-  <%= link_to "Home", root_path %>
-</div>
+    <div class="row">
+       <% @athletes.each do |athlete| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYeMmqgj1FO8TbWrQoyo33lLB23fY0xpU6i-yWB4qdjf1mtYTrteryRQ" alt="..." class="pull-left">
+          <div class="caption">
+            <h3 class="text-center"><%= athlete.username %></h3>
+            <p class="text-center"><%= athlete.instruments.first.name %></p>
+            <% if !athlete.sports.empty? %>
+            <p class="text-center"><%= athlete.sports.first.name %></p>
+            <% end %>
+            <p class="text-right"><a href="/players/<%= athlete.id %>" class="btn btn-primary" role="button">Profile</a> </p>
+          </div>
+        </div>
+    </div>
   <% else %>
-    <h4>Sorry, we can't find what you're looking for.</h4>
-    <%= link_to "Home", root_path %>
+    <div class="alert alert-danger" role="alert">
+      <h2>Sorry, there are no results that match that query.</h2>
+      <%= link_to "Home", root_path, :class => "btn btn-primary btn-lg" %>
+    </div>
   <% end %>
 
 </div>
