@@ -1,16 +1,29 @@
+<div id="teams-sorted">
 <% if !@teams.empty? %>
-<h4><%= @teams.count  %> <%= @teams.count > 1 ? "results:" : "result:" %></h4>
-  <div>
-    <h4>Teams</h4>
-    <ol>
-      <% @teams.each do |team| %>
-      <li><%= team.team_name %></li>
-      <% end %>
-    </ol>
+
+<div class="alert alert-success" role="alert">
+  <h2 class="text-center"><%= @teams.count  %> <%= @teams.count > 1 ? "results:" : "result:" %></h2>
+</div>
+
+<div class="row">
+<% @teams.each do |team| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="#" alt="..." class="pull-left">
+      <div class="caption">
+        <h3 class="text-center"><%= team.team_name %></h3>
+        <p class="text-center"><%= team.sports.first.name %></p>
+        <p class="text-right"><a href="/teams/<%= team.id %>" class="btn btn-primary" role="button">Profile</a> </p>
+      </div>
+    </div>
   </div>
-  <div>
-    <%= link_to "Home", root_path %>
-  </div>
+  <% end %>
+</div>
+
 <% else %>
-  <h4>Sorry, we can't find what you're looking for.</h4>
+  <div class="alert alert-danger" role="alert">
+  <h2 class="text-center">Sorry, there are no results that match that query.</h2>
+  </div>
+  <%= link_to "Home", root_path, :class => "btn btn-primary btn-lg" %>
 <% end %>
+</div>
