@@ -63,6 +63,22 @@
 }
 
 
+#athletes-sorted {
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+#teams-sorted {
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+#team-search-sport {
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+
 .jumbotron {
   padding-left: 3em;
   padding-right: 3em;
