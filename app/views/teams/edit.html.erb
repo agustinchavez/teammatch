@@ -1,26 +1,50 @@
 <div class="container">
-<h2>Update Profile</h2>
+<div class="inner-container">
+ <h2>Update My Profile</h2>
 
-<h2>Update your information below:</h2>
-<%= form_for @team, url: team_path(@team), method: :put do |f| %>
+ <h2>Update your information below:</h2>
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
 
-  <p><%= f.label :team_name %></p>
-  <p><%= f.text_field :team_name %></p>
+ <%= form_for @team, url: team_path(@team), method: :put do |f| %>
 
-  <p><%= f.label :info %></p>
+   <p><%= f.label :name %></p>
+   <p><%= f.text_field :name %></p>
+
+
+   <p><%= f.label :info %></p>
   <p><%= f.text_field :info %></p>
+  <p><%= f.text_area :info %></p>
 
   <p><%= f.label :admin %></p>
   <p><%= f.text_field :admin %></p>
+  <p><%= f.label :sports %></p>
+    <% @sports.each do |sport| %>
+        <p>
+          <%= check_box_tag 'sport_types[]', sport %>
+          <%= sport %>
+        </p>
+    <% end %>
 
   <p><%= f.label :positions %></p>
   <p><%= f.text_field :team[:positions] %></p>
+  <p><%= f.label :admin_name %></p>
+  <p><%= f.text_field :admin_name, :value => "" %></p>
 
-  <p><%= f.label :members %></p>
+  <h4>Enter their usernames separated by commas!</h4>
+  <h4>(You may only add other registered players.)</h4>
+   <p><%= f.label :members %></p>
   <p><%= f.text_field :team[:members] %></p>
+  <p><%= f.text_area :members, :value => "" %></p>
 
-  <%= f.submit "Update my Team", class: "button" %>
+   <%= f.submit "Update my team", class: "button" %>
 <% end %>
-</div>
+  <% end %>
+ </div>
 
-<p><%= link_to "Delete my Team", team_path(@team), method: :delete %></p></div>
+<p><%= link_to "Delete my team", team_path(@team), method: :delete %></p></div>
+<% if current_player.id == @team.admin.id %>
+<% end %>

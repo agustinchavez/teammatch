@@ -1,5 +1,9 @@
 class PlayersController < ApplicationController
 
+  def index
+    @players = Player.all
+   end
+
   def new
   end
 
@@ -43,13 +47,13 @@ class PlayersController < ApplicationController
               @player.positions << Position.find_or_create_by(name: position.strip)
             end
           end
-        end
 
         @player.update_attributes(player_params)
         redirect_to player_path(@player)
       else
         render :edit
       end
+    end
     end
 
     def destroy

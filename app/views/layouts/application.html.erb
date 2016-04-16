@@ -24,8 +24,8 @@
       </div>
       <% if logged_in? %>
       <div id="logged-in-btns">
-        <a class="btn btn-default navbar-btn navbar-right" href="/players/<%= current_player.id %>" role="button"><%= current_player.username %></a>
         <a class="btn btn-default navbar-btn navbar-right" href="/logout" role="button">Log Out</a>
+        <a class="btn btn-default navbar-btn navbar-right" href="/players/<%= current_player.id %>" role="button"><%= current_player.username %></a>
       </div>
       <% else %>
       <div id="logged-out-btns">
