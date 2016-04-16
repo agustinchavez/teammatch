@@ -7,6 +7,7 @@
    <% @player.positions.each do |position| %>
    <div class="inner-container"><%= position.name %></div>
    <% end %>
+   <% end %>
  </div>
 
  <div class="inner-container">
@@ -15,6 +16,7 @@
    <% @player.sports.each do |sport| %>
    <div class="inner-container"><%= sport.name %></div>
    <% end %>
+   <% end %>
  </div>
 
  <div class="inner-container">
@@ -22,6 +24,7 @@
    <% current_player.teams.each do |team| %>
    <% @player.teams.each do |team| %>
    <div class="inner-container"><%= team.team_name %></div>
+   <% end %>
    <% end %>
  </div>
 
