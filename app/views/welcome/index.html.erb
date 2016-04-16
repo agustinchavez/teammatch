@@ -25,7 +25,9 @@
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYeMmqgj1FO8TbWrQoyo33lLB23fY0xpU6i-yWB4qdjf1mtYTrteryRQ" alt="..." class="pull-left">
       <div class="caption">
         <h3 class="text-center"><%= athlete.username %></h3>
-        <p class="text-center"><%= athlete.positions.first.name %></p>
+        <% if !athlete.positions.empty? %>
+          <p class="text-center"><%= athlete.positions.first.name %></p>
+        <% end %>
         <% if !athlete.sports.empty? %>
         <p class="text-center"><%= athlete.sports.first.name %></p>
         <% end %>
