@@ -5,12 +5,23 @@ class PlayersController < ApplicationController
   end
 
   def new
+    @player = Player.new
   end
 
   def create
-  end
-
-  def create
+    auth = request.env['omniauth.auth']
+    @player = Player.validate_via_provider(auth)
+    @sports = Sport.pluck(:name)
+    if @player
+      session[:player_id] = @player.id
+      if @player.has_positions?
+        redirect_to player_path(@player)
+      else
+        render :new
+      end
+    else
+      redirect_to root_path
+    end
   end
 
   def show

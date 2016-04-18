@@ -12,4 +12,20 @@ class Player < ActiveRecord::Base
   has_many :media, as: :showable
 
 
+  def self.validate_via_provider(auth)
+    @player = Player.find_by(provider: auth[:provider], uid: auth[:uid])
+    @player = Player.new(provider: auth[:provider], uid: auth[:uid]) unless @player
+    @player.username = auth[:info][:name]
+    if @player.new_record?
+      @player.password = SecureRandom.uuid()
+      @player.phone = '122345689'
+      @player.save
+    end
+      @player
+  end
+
+  def has_positions?
+    self.positions.any?
+  end
+
 end

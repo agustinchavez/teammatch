@@ -8,6 +8,7 @@ class WelcomeController < ApplicationController
   end
 
   def edit
+   @player = Player.find(params[:id])
    @sports = Sport.pluck(:name)
   end
 
