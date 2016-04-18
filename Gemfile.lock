@@ -99,6 +99,9 @@ GEM
     heroku-api (0.4.2)
       excon (~> 0.45)
       multi_json (~> 1.8)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -283,6 +286,7 @@ DEPENDENCIES
   faker
   foundation-rails
   heroku
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   launchy

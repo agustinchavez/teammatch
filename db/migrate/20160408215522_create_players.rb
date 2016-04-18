@@ -4,7 +4,8 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :username, null: false
       t.string :email
       t.string :password_digest, null: false
-      # latitude, longitude
+      t.decimal :latitude
+      t.decimal :longitude
       t.string :address
       t.string :city
       t.string :state

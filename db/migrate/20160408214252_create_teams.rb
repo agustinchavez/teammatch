@@ -4,7 +4,12 @@ class CreateTeams < ActiveRecord::Migration
       t.string :team_name
       t.text :info
       t.integer :admin_id, null: false
-      # latitude, longitude
+      t.decimal :latitude
+       t.decimal :longitude
+       t.string :address
+       t.string :city
+       t.string :state
+       t.integer :zip
 
       t.timestamps null: false
     end
