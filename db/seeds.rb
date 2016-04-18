@@ -193,6 +193,16 @@ highway_hurricanes = Team.create(name: "Highway Hurricanes", info: Faker::Lorem.
 ruby_ruby_ruby_ruby = Team.create(name: "Ruby, et al.", info: Faker::Lorem.paragraph(1), admin_id: jennie.id)
 latino_heat = Team.create(name: "Latino Heat", info: Faker::Lorem.paragraph(1), admin_id: mia.id)
 
+
+the_strokes_video1 = strokes.media.create(media_type: "youtube", content: "video", link: "https://www.youtube.com/watch?v=pT68FS3YbQ4")
+the_strokes_video2 = strokes.media.create(media_type: "youtube", content: "video", link: "https://www.youtube.com/watch?v=knU9gRUWCno")
+the_strokes_image1 = strokes.media.create(media_type: "image", content: "image", link: "https://static-secure.guim.co.uk/sys-images/Arts/Arts_/Pictures/2015/3/23/1427130870373/The-Strokes-009.jpg")
+the_strokes_image2 = strokes.media.create(media_type: "image", content: "image", link: "http://images4.fanpop.com/image/photos/23200000/The-Strokes-the-strokes-23203114-500-477.png")
+the_strokes_soundcloud1 = strokes.media.create(media_type: "soundcloud", content: "music", link: "https://soundcloud.com/thestrokesofficial/tracks")
+the_strokes_soundcloud2 = strokes.media.create(media_type: "soundcloud", content: "music", link: "https://soundcloud.com/thestrokes")
+
+
+
 sports = %w(soccer basketball baseball softball rugby cricket hockey ultimate_frisbee)
 sports.map{|e| e.capitalize }
 teams = %w(Winners FireFlys Dreams\ Of\ Glory FlameThrowers Northside\ Geeks Loopers Flowers Sharknados Wolverines Dethroners Dudeloves Mankinds Cactus\ Jacks Anagrams)
