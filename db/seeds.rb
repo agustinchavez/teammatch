@@ -5,57 +5,57 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-pele = Player.create(username: "pele", password: "password", email: "pele@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+pele = Player.create(username: "pele", password: "password", email: "pele@gmail.com", address: "300 W. Adams Street", city: "Chicago", state: "IL", zip:  60606, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-mia = Player.create(username: "Mia Hamm", password: "password", email: "hamm@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+mia = Player.create(username: "Mia Hamm", password: "password", email: "hamm@gmail.com", address: "333 N. Michigan Avenue", city: "Chicago", state: "IL", zip: 60601, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-jennie = Player.create(username: "Jennie Finch", password: "password", email: "Finch@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+jennie = Player.create(username: "Jennie Finch", password: "password", email: "Finch@gmail.com", address: "35 E. Wacker Drive", city: "Chicago", state: "IL", zip: 60601, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-jonah = Player.create(username: "jonah lomu", password: "password", email: "lomu@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+jonah = Player.create(username: "jonah lomu", password: "password", email: "lomu@gmail.com", address: "3600 N. Halsted Street", city: "Chicago", state: "IL", zip: 60613, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-karim = Player.create(username: "Karim Abdul Jabba", password: "password", email: "karim@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+karim = Player.create(username: "Karim Abdul Jabba", password: "password", email: "karim@gmail.com", address: "6901 S. Oglesby Avenue", city: "Chicago", state: "IL", zip: 60649, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-cristiano = Player.create(username: "Cristiano Ronaldo", password: "password", email: "cristiano_ronaldo@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+cristiano = Player.create(username: "Cristiano Ronaldo", password: "password", email: "cristiano_ronaldo@gmail.com", address: "880 N. Lake Shore Drive", city: "Chicago", state: "IL", zip: 60611, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-lionel = Player.create(username: "Lionel Messi", password: "password", email: "lionel_messi@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+lionel = Player.create(username: "Lionel Messi", password: "password", email: "lionel_messi@gmail.com", address: "4605 N. Hermitage Avenue", city: "Chicago", state: "IL", zip: 60640, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-javier = Player.create(username: "Javier Hernandez", password: "password", email: "chicharito@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+javier = Player.create(username: "Javier Hernandez", password: "password", email: "chicharito@gmail.com", address: "9326 S. Pleasant Avenue", city: "Chicago", state: "IL", zip: 60643, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-omar = Player.create(username: "Omar Bravo", password: "password", email: "bravo@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+omar = Player.create(username: "Omar Bravo", password: "password", email: "bravo@gmail.com", address: "4550 N. Hermitage Avenue", city: "Chicago", state: "IL", zip: 60640, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-fernando = Player.create(username: "Fernando Valenzuela", password: "password", email: "valenzuela@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+fernando = Player.create(username: "Fernando Valenzuela", password: "password", email: "valenzuela@gmail.com", address: "701 N. Michigan Avenue", city: "Chicago", state: "IL", zip: 60611, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-ramon = Player.create(username: "Ramon Morales", password: "password", email: "ramoncito@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+ramon = Player.create(username: "Ramon Morales", password: "password", email: "ramoncito@gmail.com", address: "3800 N Alta Vista Terrace", city: "Chicago", state: "IL", zip: 60613, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-oswaldo = Player.create(username: "Oswaldo Sanchez", password: "password", email: "oswaldo@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+oswaldo = Player.create(username: "Oswaldo Sanchez", password: "password", email: "oswaldo@gmail.com", address: "850 E. 58th Street", city: "Chicago", state: "IL", zip: 60637, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-wayne = Player.create(username: "Wayne Rooney", password: "password", email: "rooney@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+wayne = Player.create(username: "Wayne Rooney", password: "password", email: "rooney@gmail.com", address: "10541 S. Hoyne Avenue", city: "Chicago", state: "IL", zip: 60643, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-rio = Player.create(username: "Rio Ferdinand", password: "password", email: "rio@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+rio = Player.create(username: "Rio Ferdinand", password: "password", email: "rio@gmail.com", address: "430 S. Michigan Avenue", city: "Chicago", state: "IL", zip: 60605, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-ray = Player.create(username: "Ray Lewis", password: "password", email: "lewis@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+ray = Player.create(username: "Ray Lewis", password: "password", email: "lewis@gmail.com", address: "7415 N. Sheridan Road", city: "Chicago", state: "IL", zip: 60626, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-david = Player.create(username: "David Beckham", password: "password", email: "Beckham@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+david = Player.create(username: "David Beckham", password: "password", email: "Beckham@gmail.com", address: "1244 W. Carmen Avenue", city: "Chicago", state: "IL", zip: 60626, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-zizou = Player.create(username: "zinadine zidane", password: "password", email: "zizou@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+zizou = Player.create(username: "zinadine zidane", password: "password", email: "zizou@gmail.com", address: "5810 W. Midway Park", city: "Chicago", state: "IL", zip: 60644, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-larry = Player.create(username: "Larry Bird", password: "password", email: "bird@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+larry = Player.create(username: "Larry Bird", password: "password", email: "bird@gmail.com", address: "1001 W. Belmont Avenue", city: "Chicago", state: "IL", zip:60657, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-babe = Player.create(username: "Babe Ruth", password: "password", email: "ruth@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+babe = Player.create(username: "Babe Ruth", password: "password", email: "ruth@gmail.com", address: "636 S. Michigan Avenue", city: "Chicago", state: "IL", zip: 60605, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-joe = Player.create(username: "Joe Montana", password: "password", email: "montana@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+joe = Player.create(username: "Joe Montana", password: "password", email: "montana@gmail.com", address: "4904 S. Lake Park Avenue", city: "Chicago", state: "IL", zip: 60615, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-michael = Player.create(username: "Michael Jordan", password: "password", email: "jordan@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+michael = Player.create(username: "Michael Jordan", password: "password", email: "jordan@gmail.com", address: "2700 Point Dr", city: "Highland Park", state: "IL", zip: 60035, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-magic = Player.create(username: "Irving Johnson", password: "password", email: "magic@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+magic = Player.create(username: "Irving Johnson", password: "password", email: "magic@gmail.com", address: "2800 N. Pine Grove Avenue", city: "Chicago", state: "IL", zip: 60657, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-sammy = Player.create(username: "Sammy Sosa", password: "password", email: "sammy@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+sammy = Player.create(username: "Sammy Sosa", password: "password", email: "sammy@gmail.com", address: "505 N. Lake Shore Dr.", city: "Chicago", state: "IL", zip: 60611, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-derek = Player.create(username: "Derek Jeter", password: "password", email: "jeter@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+derek = Player.create(username: "Derek Jeter", password: "password", email: "jeter@gmail.com", address: "223 W. Jackson Boulevard", city: "Chicago", state: "IL", zip: 60606, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-lou = Player.create(username: "Lou Gehrig", password: "password", email: "lou@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+lou = Player.create(username: "Lou Gehrig", password: "password", email: "lou@gmail.com", address: "5550 N. Kenmore Avenue", city: "Chicago", state: "IL", zip: 60640, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
-jackie = Player.create(username: "Jackie Robinson", password: "password", email: "jackie@gmail.com", address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
+jackie = Player.create(username: "Jackie Robinson", password: "password", email: "jackie@gmail.com", address: "25 E. Erie Street", city: "Chicago", state: "IL", zip: 60611, phone: Faker::PhoneNumber.phone_number, info: Faker::Lorem.paragraph(1))
 
 
 soccer = Sport.create(name: "Soccer")
