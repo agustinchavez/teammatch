@@ -4,10 +4,6 @@ class TeamsController < ApplicationController
     @teams = Team.all
   end
 
-  def show
-    @team = Team.find(params[:id])
-  end
-
   def new
     @team = Team.new
   end
@@ -22,9 +18,21 @@ class TeamsController < ApplicationController
     end
   end
 
+  def show
+    @team = Team.find(params[:id])
+  end
+
   def edit
    @team = Team.find(params[:id])
    @sports = Sport.pluck(:name)
+  end
+
+  def destroy
+   if @team.destroy
+     redirect_to root_path
+   else
+     @errors = @team.errors.full_messages
+   end
   end
 
   def update
@@ -63,13 +71,7 @@ class TeamsController < ApplicationController
  end
 end
 
-def destroy
- if @team.destroy
-   redirect_to root_path
- else
-   @errors = @team.errors.full_messages
- end
-end
+
 def search
   sport_ids = params["Sport"].map {|e| e[0].to_i}
   sports = Sport.find(sport_ids)
@@ -77,7 +79,7 @@ def search
   teams_from_sport = sports_with_teams.map {|sport| sport.teams}.flatten
   team_ids = teams_from_sport.map {|team| team.id}
   @teams = Team.find(team_ids)
-  render "teams/_teamssorted", layout: false
+  render :"teams/_teams-sorted", layout: false
 end
 
 private

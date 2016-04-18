@@ -8,9 +8,10 @@
     <h3>Positions</h3>
     <div class="inner-container">
       <% @team.players.each do |player| %>
+        <%= player.username %>:
         <% player.positions.each do |position| %>
          <div class="tag"><%= position.name %></div>
-      <% end %>
+      <% end %><br>
       <% end %>
     </div>
   </div>
@@ -42,6 +43,13 @@
   </div>
 </div>
 
+<% if logged_in? %>
+<% if current_player.id == @team.admin.id %>
 <div class="buttons">
-  <%= button_to "Check us out!", root_path, method: :get, class: "button" %>
+  <%= button_to "Edit Profile", edit_team_path(@team), method: :get, class: "button" %>
+  <%= button_to "Delete Profile", method: :delete, class: "button" %>
+</div>
+<% end %>
+<% end %>
+<%= button_to "See Our Work", root_path, method: :get, class: "button" %>
 </div>

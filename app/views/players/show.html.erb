@@ -1,49 +1,42 @@
 <div class="inner-container">
- <div class="profile-photo"></div>
- <div class="inner-container">
+  <div class="profile-photo"></div>
+  <div class="inner-container">
 
-   <h3>Positions</h3>
-   <% current_player.positions.each do |position| %>
-   <% @player.positions.each do |position| %>
-   <div class="inner-container"><%= position.name %></div>
-   <% end %>
-   <% end %>
- </div>
-
- <div class="inner-container">
-   <h3>Sports</h3>
-   <% current_player.sports.each do |sport| %>
-   <% @player.sports.each do |sport| %>
-   <div class="inner-container"><%= sport.name %></div>
-   <% end %>
-   <% end %>
- </div>
-
- <div class="inner-container">
-   <h3>Teams</h3>
-   <% current_player.teams.each do |team| %>
-   <% @player.teams.each do |team| %>
-   <div class="inner-container"><%= team.team_name %></div>
-   <% end %>
-   <% end %>
- </div>
-
- <div class="inner-container">
-   <h3>Info</h3>
-   <p><%= current_player.info %></p>
-   <p><%= @player.info %></p>
- </div>
-
- <div class="buttons">
-  <%= button_to "See my Work", root_path, method: :get, class: "button" %>
-</div>
-
-<div class="buttons">
-  <%= button_to "See my Work", root_path, method: :get, class: "button" %>
-  <% if current_player.id == @player.id %>
-  <div class="buttons">
-    <%= button_to "Edit Profile", edit_player_path(current_player), method: :get, class: "button" %>
-    <%= button_to "Delete Profile", root_path, method: :delete, class: "button" %>
+    <h3>Positions</h3>
+    <% @player.positions.each do |position| %>
+      <div class="inner-container"><%= position.name %></div>
+    <% end %>
   </div>
+
+  <div class="inner-container">
+    <h3>Sports</h3>
+    <% @player.sports.each do |sport| %>
+      <div class="inner-container"><%= sport.name %></div>
+    <% end %>
+  </div>
+
+  <div class="inner-container">
+    <h3>Teams</h3>
+    <% @player.teams.each do |team| %>
+      <div class="inner-container"><%= team.team_name %></div>
+    <% end %>
+  </div>
+
+  <div class="inner-container">
+    <h3>info</h3>
+    <p><%= @player.info %></p>
+  </div>
+
+  <div class="buttons">
+    <%= button_to "See my Work", root_path, method: :get, class: "button" %>
+  </div>
+
+  <% if logged_in? %>
+    <% if current_player.id == @player.id %>
+      <div class="buttons">
+        <%= button_to "Edit Profile", edit_player_path(current_player), method: :get, class: "button" %>
+        <%= button_to "Delete Profile", root_path, method: :delete, class: "button" %>
+      </div>
+    <% end %>
   <% end %>
 </div>
