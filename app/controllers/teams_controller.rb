@@ -82,9 +82,14 @@ def search
   render :"teams/_teams-sorted", layout: false
 end
 
-private
+  def media
+    @team = Team.find(params[:id])
+    render partial:'team_media', locals: {band: @band}
+  end
 
-def team_params
-  team_params = params.require(:team).permit(:name, :info, :admin_id)
-end
+  private
+
+  def team_params
+    team_params = params.require(:team).permit(:name, :info, :admin_id)
+  end
 end
