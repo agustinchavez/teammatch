@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_player
-    @player ||= Player.find_by(id: session[:player_id]) if session[:player_id]
+    @current_player ||= Player.find_by(id: session[:player_id]) if session[:player_id]
   end
 
 
