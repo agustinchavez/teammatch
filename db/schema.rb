@@ -58,9 +58,11 @@ ActiveRecord::Schema.define(version: 20160413214816) do
   end
 
   create_table "players", force: :cascade do |t|
-    t.string   "username"
+    t.string   "username",        null: false
     t.string   "email"
-    t.string   "password_digest"
+    t.string   "password_digest", null: false
+    t.decimal  "latitude"
+    t.decimal  "longitude"
     t.string   "address"
     t.string   "city"
     t.string   "state"
@@ -74,13 +76,13 @@ ActiveRecord::Schema.define(version: 20160413214816) do
   end
 
   create_table "positions", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "sports", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -95,7 +97,13 @@ ActiveRecord::Schema.define(version: 20160413214816) do
   create_table "teams", force: :cascade do |t|
     t.string   "team_name"
     t.text     "info"
-    t.integer  "admin_id"
+    t.integer  "admin_id",   null: false
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
