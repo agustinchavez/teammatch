@@ -7,7 +7,6 @@ $(document).ready(function(){
       data: $(event.target).serialize()
     })
     .done(function(response){
-      console.log(response)
       $('.original-homepage').replaceWith(response)
       });
     });
@@ -20,7 +19,6 @@ $(document).ready(function(){
       data: $(event.target).serialize()
     })
     .done(function(response){
-      console.log(response)
       $('#team-search-sport').replaceWith(response)
       });
     });
@@ -34,7 +32,6 @@ $(document).ready(function(){
     })
 
     .done(function(response){
-      console.log(response)
       $('#athletes-search-sport').replaceWith(response)
       });
     });
@@ -48,9 +45,22 @@ $(document).ready(function(){
     })
 
     .done(function(response){
-      console.log(response)
       $('#athletes-positions-search').replaceWith(response)
       });
     });
+
+    $('.homepage').on("submit", "#athletes-location", function(event){
+    event.preventDefault();
+    $.ajax({
+      method: "post",
+      url: "players/search",
+      data: $(event.target).serialize()
+    })
+
+    .done(function(response){
+      $('#athletes-location').replaceWith(response)
+      });
+    });
+
 
   });

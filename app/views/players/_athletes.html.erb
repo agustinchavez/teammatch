@@ -30,7 +30,9 @@
         <% if !athlete.sports.empty? %>
           <p class="text-center"><%= athlete.sports.first.name %></p>
         <% end %>
-        <p class="text-right"><a href="/users/<%= musician.id %>" class="btn btn-primary" role="button">Profile</a></p>
+        <p class="text-center"><%= athlete.city %>, <%= athlete.state %></p>
+        <p class="text-center">Distance from me <%= athlete.distance_from(Player.find(27), :units=>:miles).round(2) %></p>
+        <p class="text-right"><a href="/players/<%= athlete.id %>" class="btn btn-primary" role="button">Profile</a></p>
       </div>
     </div>
   </div>

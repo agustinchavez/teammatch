@@ -94,7 +94,17 @@ class PlayersController < ApplicationController
         @athletes = position_with_athletes.map {|position| position.players}.flatten
       end
       @athletes = @original_athletes & @athletes
-      render "players/athletes_sorted", layout: false
+      @musicians_ids = @musicians.map {|musician| musician.id}
+      render "users/_musicians-location", layout: false
+    elsif params["Distance"]
+      athletes_ids = params["athletes"].split(" ").map {|e| e.to_i}
+      original_athletes = Player.find(athletes_ids)
+      player = Player.find(27)
+      player_location = [player.latitude, player.longitude]
+      distance = params["Distance"][0].to_i
+      all_athletes_near = Player.within(distance, :origin => player_location)
+      @athletes = original_athletes & all_athletes_near
+      render "players/_athletes-sorted", layout: false
     end
   end
 
