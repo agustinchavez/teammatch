@@ -51,5 +51,9 @@
 </div>
 <% end %>
 <% end %>
-<%= button_to "See Our Work", root_path, method: :get, class: "button" %>
-</div>
+<% if @team.has_media? %>
+   <%= button_to "See Our Work", root_path, method: :get, class: "button link_media", data: {id: @team.id} %>
+ <% end %>
+ </div>
+ <div class="media-resources">
+ </div>

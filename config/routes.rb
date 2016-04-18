@@ -8,6 +8,7 @@
 
   resources :teams
   post 'teamss/search', :to => 'teams#search'
+  get 'media/:id', :to => 'teams#media'
   resources :sports, only: [:create, :new, :show, :destroy]
   resources :positions, only: [:create, :new, :show, :destroy]
   resources :medium
