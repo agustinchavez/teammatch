@@ -13,7 +13,11 @@ class SessionsController < ApplicationController
       player.save!
     end
     session[:player_id] = player.id
-    redirect_to root_path
+    if player.positions == []
+       redirect_to welcome_edit_path
+     else
+       redirect_to root_path
+     end
   end
 
  def destroy

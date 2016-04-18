@@ -29,9 +29,11 @@
           <p class="text-center"><%= athlete.positions.first.name %></p>
         <% end %>
         <% if !athlete.sports.empty? %>
-        <p class="text-center"><%= athlete.sports.first.name %></p>
+          <p class="text-center"><%= athlete.sports.first.name %></p>
         <% end %>
-        <p class="text-right"><a href="/players/<%= athlete.id %>" class="btn btn-primary" role="button">Profile</a> </p>
+        <% if logged_in? %>
+          <p class="text-right"><a href="/players/<%= athlete.id %>" class="btn btn-primary" role="button">Profile</a> </p>
+        <% end %>
       </div>
       </div>
 
