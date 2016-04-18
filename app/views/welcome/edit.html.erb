@@ -1,0 +1,38 @@
+<span>Thanks For Joining TeamMatch!</span>
+<span>We Need To Verify Some Of Your Information</span>
+<%= form_for current_player, url: player_path(current_player), method: :put do |f| %>
+
+<% if @errors %>
+    <% @player.errors.full_messages.each do |error| %>
+      <h2 class=""><%= error %></h2><br>
+    <% end %>
+  <% end %>
+
+  <p><%= f.label :username %></p>
+  <p><%= f.text_field :username %></p>
+
+  <h4>Please enter positions separated by a comma.</h4>
+  <p><%= f.label :positions %></p>
+  <p><%= f.text_field :positions, :value => "" %></p>
+
+  <p><%= f.label :sports %></p>
+    <% @sports.each do |sport| %>
+        <p>
+          <%= check_box_tag 'sport_types[]', sport %>
+          <%= sport %>
+        </p>
+    <% end %>
+
+  <p><%= f.label :email %></p>
+  <p><%= f.text_field :email %></p>
+
+  <p><%= f.label :phone %></p>
+  <p><%= f.text_field :phone %></p>
+
+  <p><%= f.label :info %></p>
+  <p><%= f.text_area :info %></p>
+
+
+  <%= f.submit "Verify", class: "button" %>
+<% end %>
+</div>

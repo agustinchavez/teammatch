@@ -7,6 +7,10 @@ class WelcomeController < ApplicationController
     @teams = Team.all
   end
 
+  def edit
+   @sports = Sport.pluck(:name)
+  end
+
   def search
     if params[:group] == 'Athletes'
       @athletes = Athlete.all
