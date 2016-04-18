@@ -37,3 +37,8 @@
    <%= f.submit "Update my team", class: "button" %>
   <% end %>
  </div>
+
+ <% if logged_in? %>
+ <% if current_user.id == @band.admin.id %>
+ <% end %>
+ <% end %>

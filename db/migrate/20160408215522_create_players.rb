@@ -1,9 +1,10 @@
 class CreatePlayers < ActiveRecord::Migration
   def change
     create_table :players do |t|
-      t.string :username
+      t.string :username, null: false
       t.string :email
-      t.string :password_digest
+      t.string :password_digest, null: false
+      # latitude, longitude
       t.string :address
       t.string :city
       t.string :state
