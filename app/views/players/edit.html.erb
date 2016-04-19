@@ -5,7 +5,7 @@
 <%= form_for @player, url: player_path(@player), method: :put do |f| %>
 
   <% if @errors %>
-    <% @user.errors.full_messages.each do |error| %>
+    <% @player.errors.full_messages.each do |error| %>
       <h2 class=""><%= error %></h2><br>
     <% end %>
   <% end %>
@@ -13,8 +13,13 @@
   <p><%= f.label :username %></p>
   <p><%= f.text_field :username %></p>
 
-  <h4>Please enter positions separated by a comma.</h4>
-  <p><%= f.label :positions %></p>
+  <% @player.positions.each do |position| %>
+     <p>
+       <%= position.name.capitalize %>
+       <%= link_to "Delete",  position_path, method: :delete %>
+     </p>
+   <% end %>
+  <p><%= f.label "Enter new positions separated by a comma." %>:</p>
   <p><%= f.text_field :positions, :value => "" %></p>
 
   <p><%= f.label :sports %></p>

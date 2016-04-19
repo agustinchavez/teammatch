@@ -31,14 +31,12 @@ class PlayersController < ApplicationController
   def edit
     @player = Player.find(params[:id])
     @sports = Sport.pluck(:name)
-    @errors = @player.errors.full_messages
   end
 
   def update
     @player = Player.find(params[:id])
 
     if @player.save
-      binding.pry
       if params.has_key?("sport_types")
         @player.sports = []
         @sports = params[:sport_types]
