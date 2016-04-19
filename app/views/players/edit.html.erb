@@ -16,7 +16,7 @@
   <% @player.positions.each do |position| %>
      <p>
        <%= position.name.capitalize %>
-       <%= link_to "Delete",  position_path, method: :delete %>
+       <%= link_to "Delete",  position_path(position), method: :delete %>
      </p>
    <% end %>
   <p><%= f.label "Enter new positions separated by a comma." %>:</p>

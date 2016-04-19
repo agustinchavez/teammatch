@@ -35,7 +35,7 @@
     <% if current_player.id == @player.id %>
       <div class="buttons">
         <%= button_to "Edit Profile", edit_player_path(current_player), method: :get, class: "button" %>
-        <%= button_to "Delete Profile", root_path, method: :delete, class: "button" %>
+        <%= button_to "Delete Profile", root_path, :confirm => 'Are you sure?', method: :delete, class: "button" %>
       </div>
     <% end %>
   <% end %>

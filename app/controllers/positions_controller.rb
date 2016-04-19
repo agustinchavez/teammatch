@@ -19,7 +19,7 @@ class PositionsController < ApplicationController
     @player = current_player
     @position = Position.find(params[:id])
     @position.destroy
-    redirect_to root_path
+    redirect_to edit_player_path(@player)
   end
 
   private
