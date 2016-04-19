@@ -3,6 +3,8 @@ class Player < ActiveRecord::Base
   acts_as_mappable :lat_column_name => :latitude,
                    :lng_column_name => :longitude
 
+  before_save :has_lat_long
+
   validates :username, presence: true
 
   has_many :player_sports
@@ -44,13 +46,21 @@ class Player < ActiveRecord::Base
 
   def lat_long
     # OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
-    addr = URI.escape(parse_address)
-    res = HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?address=#{addr}&key=AIzaSyC7dmZEFn1tJOy7zeVH2Hce3tF8U0_MnIg")
-    lat =  res["results"][0]["geometry"]["location"]["lat"]
-    lng =  res["results"][0]["geometry"]["location"]["lng"]
-    # self.latitude = lat
-    # self.longitude = lng
-    self.update(latitude: lat, longitude: lng)
+    if self.latitude == nil && self.longitude == nil
+      addr = URI.escape(parse_address)
+      res = HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?address=#{addr}&key=AIzaSyC7dmZEFn1tJOy7zeVH2Hce3tF8U0_MnIg")
+      lat =  res["results"][0]["geometry"]["location"]["lat"]
+      lng =  res["results"][0]["geometry"]["location"]["lng"]
+      # self.latitude = lat
+      # self.longitude = lng
+      self.update(latitude: lat, longitude: lng)
+  end
+
+  def has_lat_long
+    if self.address && self.latitude == nil && self.longitude == nil
+      lat_long
+    elsif self.address == nil
+    end
   end
 
 end

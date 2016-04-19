@@ -98,12 +98,6 @@ ActiveRecord::Schema.define(version: 20160413214816) do
     t.string   "team_name"
     t.text     "info"
     t.integer  "admin_id",   null: false
-    t.decimal  "latitude"
-    t.decimal  "longitude"
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
