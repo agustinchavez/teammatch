@@ -40,6 +40,7 @@
  <% @team.players.each do |member| %>
      <p>
        <%= member.username %>
+       <%= link_to "Delete",  member_path(member: member), method: :delete %>
      </p>
    <% end %>
 
@@ -48,14 +49,6 @@
   <p><%= f.label :members %></p>
   <p><%= f.text_area :members, :value => "" %></p>
 
-  <% if current_player.id == @team.admin.id %>
-  <% end %>
-
    <%= f.submit "Update my team", class: "button" %>
-  <% end %>
- </div>
 
- <% if logged_in? %>
- <% if current_player.id == @team.admin.id %>
- <% end %>
  <% end %>
