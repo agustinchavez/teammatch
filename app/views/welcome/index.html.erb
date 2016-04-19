@@ -14,51 +14,5 @@
         <% end %>
       </div>
     </div>
-
-
-      <div id="search-results">
-
-<div class="row">
-  <% @athletes.each do |athlete| %>
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYeMmqgj1FO8TbWrQoyo33lLB23fY0xpU6i-yWB4qdjf1mtYTrteryRQ" alt="..." class="pull-left">
-      <div class="caption">
-        <h3 class="text-center"><%= athlete.username %></h3>
-        <% if !athlete.positions.empty? %>
-          <p class="text-center"><%= athlete.positions.first.name %></p>
-        <% end %>
-        <% if !athlete.sports.empty? %>
-          <p class="text-center"><%= athlete.sports.first.name %></p>
-        <% end %>
-         <p class="text-center"><%= athlete.city %>, <%= athlete.state %></p>
-
-        <% if logged_in? %>
-          <p class="text-center">Distance from me <%= athlete.distance_from(Player.find(27), :units=>:miles).round(2) %></p>
-          <p class="text-right"><a href="/players/<%= athlete.id %>" class="btn btn-primary" role="button">Profile</a> </p>
-        <% end %>
-      </div>
-      </div>
-
-      </div>
-  <% end %>
-  <% @teams.each do |team| %>
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYeMmqgj1FO8TbWrQoyo33lLB23fY0xpU6i-yWB4qdjf1mtYTrteryRQ" alt="..." class="pull-left">
-      <div class="caption">
-        <h3 class="text-center"><%= team.team_name %></h3>
-        <% if team.sports.any? %>
-          <p class="text-center"><%= team.sports.first.name %></p>
-        <% end %>
-        <p class="text-right"><a href="/teams/<%= team.id %>" class="btn btn-primary" role="button">Profile</a> </p>
-      </div>
-      </div>
-
-    </div>
-    <% end %>
-</div>
-
-    </div>
   </div>
 </div>

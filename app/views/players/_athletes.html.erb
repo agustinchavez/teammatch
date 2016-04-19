@@ -21,19 +21,20 @@
    <% @athletes.each do |athlete| %>
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYeMmqgj1FO8TbWrQoyo33lLB23fY0xpU6i-yWB4qdjf1mtYTrteryRQ" alt="..." class="pull-left">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYeMmqgj1FO8TbWrQoyo33lLB23fY0xpU6i-yWB4qdjf1mtYTrteryRQ" alt="..." class="">
       <div class="caption">
         <h3 class="text-center"><%= athlete.username %></h3>
         <% if !athlete.positions.empty? %>
-          <p class="text-center"><%= athlete.positions.first.name %></p>
+          <p class="text-center"><%= athlete.positions.first.name %>
+            <% if !athlete.sports.empty? %> | <%= athlete.sports.first.name %>
+         </p>
         <% end %>
-        <% if !athlete.sports.empty? %>
-          <p class="text-center"><%= athlete.sports.first.name %></p>
+
         <% end %>
-        <p class="text-center"><%= athlete.city %>, <%= athlete.state %></p>
-        <p class="text-center">Distance from me <%= athlete.distance_from(Player.find(current_player.id), :units=>:miles).round(2) %></p>
+        <p class="text-center"><%= athlete.city %>, <%= athlete.state %> | Miles from me: <%= athlete.distance_from(Player.find(current_player.id), :units=>:miles).round() %></p>
         <p class="text-right"><a href="/players/<%= athlete.id %>" class="btn btn-primary" role="button">Profile</a></p>
       </div>
+    </div>
     </div>
   </div>
   <% end %>

@@ -63,7 +63,7 @@
 }
 
 
-#athletes-sorted {
+#athletes-location {
   padding-left: 3em;
   padding-right: 3em;
 }
@@ -93,4 +93,8 @@
 
 .navbar-brand {
   margin-bottom: 20px;
+}
+
+.drop-shadow {
+  box-shadow: 10px 10px 5px #5A5A5A;
 }
