@@ -38,13 +38,15 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
 
     if @player.save
+      binding.pry
       if params.has_key?("sport_types")
+        @player.sports = []
         @sports = params[:sport_types]
         @sports.each do |sport|
-          unless @player.sports.map(&:name).include?(sport)
-            @player.sports << Sport.find_or_create_by(name: sport.strip)
-          end
+          @player.sports << Sport.find_or_create_by(name: sport.strip)
         end
+      else
+        @player.sports.delete_all
       end
 
       @positions = params[:player][:positions].split(",")

@@ -20,8 +20,13 @@
   <p><%= f.label :sports %></p>
     <% @sports.each do |sport| %>
         <p>
-          <%= check_box_tag 'sport_types[]', sport %>
-          <%= sport %>
+          <% if @player.sports.pluck(:name).include?(sport) %>
+            <%= check_box_tag 'sport_types[]', sport, true %>
+            <%= sport %>
+          <% else %>
+            <%= check_box_tag 'sport_types[]', sport %>
+            <%= sport %>
+          <% end %>
         </p>
     <% end %>
 
