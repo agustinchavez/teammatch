@@ -49,8 +49,8 @@ class TeamsController < ApplicationController
       new_members = params[:team][:members].split(",")
       if new_members.any?
         new_members.each do |member|
-          unless @members.map(&:username).include?(member)
-            @members << Player.find_or_create_by(username: member.strip)
+          unless @team.players.map(&:username).include?(member)
+            @team.players << Player.find_or_create_by(username: member.strip)
           end
         end
       end
