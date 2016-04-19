@@ -100,11 +100,11 @@ class PlayersController < ApplicationController
     elsif params["Distance"]
       athletes_ids = params["athletes"].split(" ").map {|e| e.to_i}
       original_athletes = Player.find(athletes_ids)
-      player = current_player
       player_location = [current_player.latitude, current_player.longitude]
       distance = params["Distance"][0].to_i
       all_athletes_near = Player.within(distance, :origin => player_location)
       @athletes = original_athletes & all_athletes_near
+      binding.pry
       render "players/_athletes-sorted", layout: false
     end
   end
