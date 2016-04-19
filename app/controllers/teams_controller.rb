@@ -9,9 +9,10 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = current_player.teams.new(team_params)
+    @team = Team.new(team_params)
+    @team.admin = current_player
     if @team.save
-      redirect_to @team
+      redirect_to teams_path()
     else
       status 400
       render :new
@@ -65,16 +66,15 @@ end
 def destroy
    @teams = Team.find(params[:id])
 
-   if @team
+   if @team && params[:member]
+      PlayerTeam.find_by(player_id: params[:member]).destroy
+      redirect_to team_path(@team)
+   elsif @team
      @team.destroy
      redirect_to root_path
    else
      @errors = @team.errors.full_messages
    end
-
-   # @member = @team.players.find(params[:id])
-   # @member.destroy
-   # redirect_to edit_team_path(@team)
  end
 
 

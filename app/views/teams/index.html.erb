@@ -14,7 +14,11 @@
     <% @teams.each do |team| %>
     <tr>
       <td align="center" style="height: 30px"><%= team.team_name %></td>
-      <td align="center"><%= team.sports.first.name %></td>
+      <td align="center">
+         <% team.sports.each do |sport| %>
+            <%= sport.name %>
+         <% end %>
+       </td>
       <td align="center">
         <% team.players.each do |player| %>
           <%= player.username %>,
