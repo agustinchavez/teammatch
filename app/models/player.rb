@@ -3,8 +3,6 @@ class Player < ActiveRecord::Base
   acts_as_mappable :lat_column_name => :latitude,
                    :lng_column_name => :longitude
 
-  before_save :lat_long
-
   validates :username, presence: true
 
   has_many :player_sports
@@ -32,7 +30,9 @@ class Player < ActiveRecord::Base
     self.positions.any?
   end
 
-   private
+  def has_media?
+    self.media.any?
+  end
 
   def parse_address
     address = self.address
