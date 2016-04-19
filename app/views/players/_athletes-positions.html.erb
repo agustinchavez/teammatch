@@ -32,8 +32,11 @@
               </p>
             <% end %>
             <% end %>
+            <% if logged_in? %>
              <p class="text-center"><%= athlete.city %>, <%= athlete.state %> | Miles from me: <%= athlete.distance_from(Player.find(current_player.id), :units=>:miles).round() %></p>
              <p class="text-right"><a href="/players/<%= athlete.id %>" class="btn btn-primary" role="button">Profile</a></p>
+           <% end %>
+         </div>
           </div>
         </div>
       </div>
