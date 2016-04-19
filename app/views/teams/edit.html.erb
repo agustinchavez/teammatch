@@ -13,32 +13,49 @@
    <p><%= f.label :name %></p>
    <p><%= f.text_field :name %></p>
 
-
-   <p><%= f.label :info %></p>
-   <p><%= f.text_area :info %></p>
-
-
    <p><%= f.label :sports %></p>
+
+
     <% @sports.each do |sport| %>
         <p>
-          <%= check_box_tag 'sport_types[]', sport %>
-          <%= sport %>
+          <% if @team.sports.pluck(:name).include?(sport) %>
+            <%= check_box_tag 'sport_types[]', sport, true %>
+            <%= sport %>
+          <% else %>
+            <%= check_box_tag 'sport_types[]', sport %>
+            <%= sport %>
+          <% end %>
         </p>
     <% end %>
 
+  <p><%= f.label :info %></p>
+  <p><%= f.text_area :info %></p>
+
   <p><%= f.label :admin_name %></p>
   <p><%= f.text_field :admin_name, :value => "" %></p>
+
+  <h4>Enter their usernames separated by commas!</h4>
+     <h4>(You may only add other registered players.)</h4>
+
+ <% @team.players.each do |member| %>
+     <p>
+       <%= member.username %>
+     </p>
+   <% end %>
 
   <h4>Enter their usernames separated by commas!</h4>
   <h4>(You may only add other registered players.)</h4>
   <p><%= f.label :members %></p>
   <p><%= f.text_area :members, :value => "" %></p>
 
+  <% if current_player.id == @team.admin.id %>
+  <% end %>
+
    <%= f.submit "Update my team", class: "button" %>
   <% end %>
  </div>
 
  <% if logged_in? %>
- <% if current_user.id == @band.admin.id %>
+ <% if current_player.id == @team.admin.id %>
  <% end %>
  <% end %>
