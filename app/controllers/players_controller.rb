@@ -104,7 +104,6 @@ class PlayersController < ApplicationController
       distance = params["Distance"][0].to_i
       all_athletes_near = Player.within(distance, :origin => player_location)
       @athletes = original_athletes & all_athletes_near
-      binding.pry
       render "players/_athletes-sorted", layout: false
     end
   end
