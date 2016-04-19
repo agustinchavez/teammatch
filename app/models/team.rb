@@ -1,4 +1,9 @@
 class Team < ActiveRecord::Base
+  acts_as_mappable :lat_column_name => :latitude,
+                    :lng_column_name => :longitude
+
+  before_save :set_lat_long
+
   has_many :media, as: :showable
   has_many :player_teams
   has_many :players, through: :player_teams
@@ -9,6 +14,11 @@ class Team < ActiveRecord::Base
 
   def has_media?
      self.media.any?
+  end
+
+  def set_lat_long
+    admin = Player.find(self.admin_id)
+    self.update(latitude: admin.latitude, longitude: admin.longitude)
   end
 
 end
