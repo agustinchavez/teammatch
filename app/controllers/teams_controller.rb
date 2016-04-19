@@ -27,19 +27,8 @@ class TeamsController < ApplicationController
    @sports = Sport.pluck(:name)
   end
 
-  def destroy
-   if @team.destroy
-     redirect_to root_path
-   else
-     @errors = @team.errors.full_messages
-   end
-  end
-
   def update
    @team = Team.find(params[:id])
-   if @team
-    @team.update_attributes(team_params)
-    @members = @team.players
 
     if @team.save
       new_admin = params[:team][:admin_name]
@@ -52,8 +41,10 @@ class TeamsController < ApplicationController
             @team.sports << Sport.find_or_create_by(name: sport.strip)
           end
         end
-
+      else
+        @team.sports.delete_all
       end
+    end
       new_members = params[:team][:members].split(",")
       if new_members.any?
         new_members.each do |member|
@@ -70,6 +61,21 @@ class TeamsController < ApplicationController
    end
  end
 end
+
+def destroy
+   @teams = Team.find(params[:id])
+
+   if @team
+     @team.destroy
+     redirect_to root_path
+   else
+     @errors = @team.errors.full_messages
+   end
+
+   # @member = @team.players.find(params[:id])
+   # @member.destroy
+   # redirect_to edit_team_path(@team)
+ end
 
 
 def search
