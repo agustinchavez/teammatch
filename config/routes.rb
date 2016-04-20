@@ -14,6 +14,7 @@
   resources :medium
   resources :players
   post 'players/search', :to => 'players#search'
+  get 'players/:id/email', :to => 'players#email'
 
   get '/login', :to => 'sessions#new', as: :login
   get 'auth/:provider', :to => 'sessions#new', as: :oauth_login

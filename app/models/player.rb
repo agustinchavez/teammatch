@@ -60,5 +60,5 @@ class Player < ActiveRecord::Base
     elsif self.address == nil
     end
   end
-
+end
 end

@@ -29,9 +29,8 @@ class PlayersController < ApplicationController
   end
 
   def email
-    if @player
-      PlayerMailer.player_email(@player).deliver
-    end
+    @player = Player.find(params[:id])
+    PlayerMailer.player_email(@player).deliver
   end
 
   def edit
