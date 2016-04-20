@@ -6,8 +6,9 @@ class PlayerMailer < ApplicationMailer
     mail(to: @player.email, subject: "Hey! Thank you for joining!")
   end
 
-  def player_email(player)
+  def player_email(player, from_player)
     @player = player
+     @from_player = from_player
     mail(to: @player.email, subject: 'Alright, alright, alright. Looks like someone wants to play!')
   end
 end

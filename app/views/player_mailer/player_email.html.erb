@@ -4,13 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to TeamMatch, <%= @player.username %>!</h1>
-    <p>
-      You have successfully signed up for TeamMatch.
-    </p>
-    <p>
-      To login to the site, just follow this link: <%= @url %>.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
+    <h1>Hi, <%= @player.username %>:</h1>
+    <p><%= @from_player.username %> is interested in joining your team!</p>
+    <p>Their email is: <%= @from_player.email %> if you'd like to contact them. Alternatively, you can find them here <a href="#"></a></p>
+    <p>Have a nice day!</p>
+    <p>The team at TeamMatch.</p>
   </body>
 </html>
