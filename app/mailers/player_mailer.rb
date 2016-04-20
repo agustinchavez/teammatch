@@ -1,8 +1,13 @@
 class PlayerMailer < ApplicationMailer
-  default from: "from@example.com"
+  default from: "chavez.agustin1991@gmail.com"
 
-  def athlete_email(player)
+  def welcome_email(player)
     @player = player
-    mail(to: @player.email, subject: 'Someone wants to play!')
+    mail(to: @player.email, subject: "Hey! Thank you for joining!")
+  end
+
+  def player_email(player)
+    @player = player
+    mail(to: @player.email, subject: 'Alright, alright, alright. Looks like someone wants to play!')
   end
 end
