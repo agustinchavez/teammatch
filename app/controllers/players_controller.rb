@@ -28,6 +28,12 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
   end
 
+  def email
+    if @player
+      PlayerMailer.player_email(@player).deliver
+    end
+  end
+
   def edit
     @player = Player.find(params[:id])
     @sports = Sport.pluck(:name)
@@ -57,6 +63,10 @@ class PlayersController < ApplicationController
       end
 
         @player.update_attributes(player_params)
+        if @player.email
+          puts "Sending email"
+          PlayerMailer.player_email(@player).deliver
+        end
         @player.lat_long
         redirect_to player_path(@player)
       else
