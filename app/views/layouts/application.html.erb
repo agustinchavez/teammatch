@@ -24,8 +24,9 @@
       </div>
       <% if logged_in? %>
       <div id="logged-in-btns">
-        <a class="btn btn-default navbar-btn navbar-right" href="/logout" role="button">Log Out</a>
-        <a class="btn btn-default navbar-btn navbar-right" href="/players/<%= current_player.id %>" role="button"><%= current_player.username %></a>
+        <%= link_to "Log Out",  logout_path, :class => "btn btn-default navbar-btn navbar-right" %>
+        <%= link_to "#{current_player.username}", player_path(current_player), :class => "btn btn-default navbar-btn navbar-right" %>
+        <%= link_to 'Create a Team', new_team_path, :class => "btn btn-default navbar-btn navbar-right" %>
       </div>
       <% else %>
       <div id="logged-out-btns">
