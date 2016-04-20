@@ -3,11 +3,14 @@
   get '/welcome/edit', :to => 'welcome#edit'
   post '/search', :to => 'welcome#search'
 
+  get 'addresource', :to => 'media#addresource'
+
   get 'register' => 'players#new, as: :register'
   get 'logout' => 'sessions#destroy, as: :logout'
 
   resources :teams
   post 'teamss/search', :to => 'teams#search'
+  resources :media
   get 'media/:id', :to => 'teams#media'
   resources :sports, only: [:create, :new, :show, :destroy]
   resources :positions, only: [:create, :new, :show, :destroy]
