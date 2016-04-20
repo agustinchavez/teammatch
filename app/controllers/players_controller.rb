@@ -31,6 +31,8 @@ class PlayersController < ApplicationController
   def email
     @player = Player.find(params[:id])
     PlayerMailer.player_email(@player).deliver
+    flash[:notice] = "Your email has been sent!"
+    redirect_to player_path(@player)
   end
 
   def edit
