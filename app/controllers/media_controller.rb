@@ -1,8 +1,8 @@
 class MediaController < ApplicationController
 
   def new
-  render :'athletes-media'
-  @media = Media.new
+    # render :'athletes-media'
+    # @media = Media.new
   end
 
   def create
@@ -21,9 +21,9 @@ class MediaController < ApplicationController
   def destroy
   end
 
-def addresource
-  render :'athletes-add-media', layout: false
-end
+  def addresource
+    render :'athletes-add-media', layout: false
+  end
 
   private
 
