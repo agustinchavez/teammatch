@@ -30,7 +30,7 @@ class PlayersController < ApplicationController
 
   def email
     @player = Player.find(params[:id])
-    PlayerMailer.player_email(@player, current_player).deliver
+    PlayerMailer.player_email(@player, current_player).deliver_now
     flash[:notice] = "Your email has been sent!"
     redirect_to player_path(@player)
   end
@@ -66,7 +66,7 @@ class PlayersController < ApplicationController
         @player.update_attributes(player_params)
         if @player.email
           puts "Sending email"
-          PlayerMailer.player_email(@player).deliver
+          PlayerMailer.welcome_email(@player).deliver_now
         end
         @player.lat_long
         redirect_to player_path(@player)
