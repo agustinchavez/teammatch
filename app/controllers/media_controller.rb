@@ -19,6 +19,9 @@ class MediaController < ApplicationController
   end
 
   def destroy
+    @media = Media.find(params[:id])
+    @media.destroy
+    redirect_to player_path(current_player)
   end
 
   def addresource
