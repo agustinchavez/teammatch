@@ -36,7 +36,6 @@ class MediaController < ApplicationController
     if params["team_id"]
       @media = Media.find(params[:id])
       @media.destroy
-      binding.pry
       redirect_to team_path(params[:team_id])
     else
       @media = Media.find(params[:id])
