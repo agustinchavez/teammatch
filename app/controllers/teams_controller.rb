@@ -113,6 +113,7 @@ def search
     distance = params["Distance"][0].to_i
     all_teams_near = Team.within(distance, :origin => player_location)
     @teams = original_teams & all_teams_near
+    @map_string = "https://maps.googleapis.com/maps/api/staticmap?size=600x300&maptype=roadmap" + @teams.map {|team| team.map_string}.join("") + "&key=AIzaSyDbL6SGxiaR5BjXdzLPJHxQyjIAhoBVz_o"
     render "teams/_teams-sorted", layout: false
   end
 end
