@@ -1,0 +1,51 @@
+<div id="teams-location">
+<% if !@teams.empty? %>
+  <% if logged_in? %>
+    <div class="jumbotron text-center drop-shadow">
+      <h1>I want my team to be this far away from me:</h1>
+      <div>
+        <%= form_tag("teams/search", method: "post") do %>
+        <%= label_tag("Miles") %>
+        <%= select("Distance", nil, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], {:include_blank => true}) %>
+        <%= hidden_field_tag :teams, @teams_ids %>
+        <br>
+        <%= submit_tag("Search", :class => "btn btn-primary btn-lg") %>
+        <% end %>
+      </div>
+  </div>
+  <% else %>
+    <div class="alert alert-danger" role="alert">
+      <h2 class="text-center">Sorry, you have to be logged-in to use our geo-search option. Here are your results based on sport and positions:</h2>
+    </div>
+  <% end %>
+
+<div class="alert alert-success" role="alert">
+  <h2 class="text-center"><%= @teams.count  %> <%= @teams.count > 1 ? "results:" : "result:" %></h2>
+</div>
+
+<div class="row">
+<% @teams.each do |team| %>
+  <div class="col-sm-6 col-md-4">
+  <div class="drop-shadow">
+    <div class="thumbnail">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYeMmqgj1FO8TbWrQoyo33lLB23fY0xpU6i-yWB4qdjf1mtYTrteryRQ" alt="...">
+      <div class="caption">
+        <h3 class="text-center"><%= team.name %></h3>
+        <p class="text-center"><%= team.sports.first.name %></p>
+        <% if logged_in? %>
+        <p class="text-center">Team location: <%= team.distance_from(Player.find(current_player.id), :units=>:miles).round() %> miles from me</p>
+        <p class="text-right"><a href="/teams/<%= team.id %>" class="btn btn-primary" role="button">Profile</a> </p>
+        <% end %>      </div>
+    </div>
+  </div>
+  </div>
+  <% end %>
+</div>
+
+<% else %>
+  <div class="alert alert-danger" role="alert">
+  <h2 class="text-center">Sorry, there are no results that match that query.</h2>
+  </div>
+  <%= link_to "Home", root_path, :class => "btn btn-primary btn-lg" %>
+<% end %>
+</div>
