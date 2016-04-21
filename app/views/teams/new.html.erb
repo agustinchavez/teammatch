@@ -1,11 +1,29 @@
 <div class="container">
-  <%= form_for @team do |f| %>
-    <%= f.label :team_name %>:<br>
-    <%= f.text_field :team_name %><br>
+<%= form_for @team do |f| %>
 
-    <%= f.label :info %>:<br>
-    <%= f.text_field :info %><br>
-    <br>
-    <%= f.submit "Create" %>
-  <% end %>
+    <%= f.label :name, "Team Name:" %><br>
+    <%= f.text_field :name %><br>
+
+    <%= f.label :info, "Team Info:" %><br>
+    <p>Enter your team's story below. (Limit of 350 characters.)</p>
+    <%= f.text_area :info %><br>
+
+    <%= f.label :admin, "Team Manager/Admin" %>:<br>
+    <p>Please enter your username or the username of another registered player.</p>
+    <%= f.text_field :admin %><br>
+
+    <p><%= f.label :sports %></p>
+        <% @sports.each do |sport| %>
+        <p>
+          <%= check_box_tag 'sport_types[]', sport %>
+          <%= sport %>
+        </p>
+      <% end %>
+
+    <%= f.label :members, "Team members:" %><br>
+    <p>Add other registered players' usernames as members below separated by commas.</p>
+    <p><%= f.text_area :members, :value => "" %></p>
+
+    <%= f.submit "Create my Team", class: "button"%>
+<% end %>
 </div>

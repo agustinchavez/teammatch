@@ -6,15 +6,34 @@ class TeamsController < ApplicationController
 
   def new
     @team = Team.new
+    @sports = Sport.pluck(:name)
   end
 
   def create
     @team = Team.new(team_params)
-    @team.admin = current_player
+    @sports = Sport.pluck(:name)
+    new_members = params[:team][:members].split(",")
+
+    admin = params[:team][:admin]
+    admin_id = Player.where(username: admin).pluck(:id)
+
+    @team.update_attributes(admin_id: admin_id)
+    binding.pry
+
+    if params.has_key?("sport_types")
+      @team_genres = params[:sport_types]
+      @team_genres.each { |sport| @team.sports << Sport.find_by(name: sport.strip) }
+    end
+
+    if new_members.any?
+      new_members.each { |member| @team.player << Player.find_by(username: member.strip) }
+    end
+
+    @team.update_attributes(team_params)
     if @team.save
-      redirect_to teams_path()
+      redirect_to teams_path
     else
-      status 400
+      @errors = @band.errors.full_messages
       render :new
     end
   end
@@ -107,6 +126,6 @@ end
   private
 
   def team_params
-    team_params = params.require(:team).permit(:name, :info, :admin_id)
+    team_params = params.require(:team).permit(:name, :info)
   end
 end
