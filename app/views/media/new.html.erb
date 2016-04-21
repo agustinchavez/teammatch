@@ -1,0 +1,8 @@
+<%= form_tag("/media", method: "post") do %>
+        <%= label_tag("Type") %>
+        <%= select("media[media_type]", nil, ['youtube', 'soundcloud', 'image'], {:include_blank => true}) %>
+        <%= text_field_tag 'media[link]', nil, size: 40, placeholder: "Copy and paste link here:" %>
+        <%= text_area_tag 'media[content]', nil, size: '40x5', placeholder: "Give your link a description:" %>
+        <%= submit_tag("Submit", :class => "btn btn-primary btn-lg") %>
+        <% end %>
+Status API Training Shop Blog About
