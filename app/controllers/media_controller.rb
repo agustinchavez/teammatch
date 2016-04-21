@@ -1,12 +1,12 @@
 class MediaController < ApplicationController
 
   def new
-    # render :'athletes-media'
-    # @media = Media.new
+
   end
 
   def create
-    binding.pry
+    current_player.media.create(media_params)
+    redirect_to player_path(current_player)
   end
 
   def edit
