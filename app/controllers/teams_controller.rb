@@ -15,10 +15,10 @@ class TeamsController < ApplicationController
     new_members = params[:team][:members].split(",")
 
     admin = params[:team][:admin]
-    admin_id = Player.where(username: admin).pluck(:id)
+    admin_id = Player.find_by(username: admin).id
 
     @team.update_attributes(admin_id: admin_id)
-    binding.pry
+    # binding.pry
 
     if params.has_key?("sport_types")
       @team_genres = params[:sport_types]

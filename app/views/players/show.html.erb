@@ -31,9 +31,10 @@
   <% if current_player.id == @player.id %>
 
   <div class="buttons">
+    <%= button_to "Send Email", email_player_path(@player), class: "button" %>
      <%= button_to "Edit Profile", edit_player_path(current_player), method: :get, class: "button" %>
     <%= button_to "Delete Profile", player_path, :confirm => 'Are you sure?',method: :delete, class: "button" %>
-    <%= button_to "Send Email", email_player_path(@player), class: "button" %>
+
     <%= form_tag new_media_path, method: "get" do %>
       <%= hidden_field_tag :player_id, @player.id %>
       <%= submit_tag("Add Media", class: "button") %>
