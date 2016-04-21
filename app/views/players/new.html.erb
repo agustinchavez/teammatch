@@ -17,12 +17,14 @@
   <p><%= f.text_field :positions, :value => "" %></p>
 
   <p><%= f.label :sports %></p>
+   <% if @sports.any? %>
     <% @sports.each do |sport| %>
         <p>
           <%= check_box_tag 'sport_types[]', sport %>
           <%= sport %>
         </p>
     <% end %>
+   <% end %>
 
   <p><%= f.label :email %></p>
   <p><%= f.text_field :email %></p>
