@@ -77,7 +77,9 @@ class PlayersController < ApplicationController
 
 
   def destroy
+    @player = Player.find(params[:id])
     @player.destroy
+    session[:player_id] = nil
     redirect_to root_path
   end
 

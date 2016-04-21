@@ -32,7 +32,7 @@
 
   <div class="buttons">
      <%= button_to "Edit Profile", edit_player_path(current_player), method: :get, class: "button" %>
-    <%= button_to "Delete Profile", root_path, :confirm => 'Are you sure?',method: :delete, class: "button" %>
+    <%= button_to "Delete Profile", player_path, :confirm => 'Are you sure?',method: :delete, class: "button" %>
     <%= button_to "Send Email", email_player_path(@player), class: "button" %>
     <%= button_to "Add Media Resource", new_media_path, method: "get", class: "button" %>
   </div>
