@@ -14,27 +14,26 @@ class TeamsController < ApplicationController
     @sports = Sport.pluck(:name)
     new_members = params[:team][:members].split(",")
 
-    admin = params[:team][:admin]
-    admin_id = Player.find_by(username: admin).id
+    if @team.valid? && @team.save
+      admin = params[:team][:admin]
+      admin_id = Player.find_by(username: admin).id
+      @team.update_attributes(admin_id: admin_id)
 
-    @team.update_attributes(admin_id: admin_id)
-    # binding.pry
-
-    if params.has_key?("sport_types")
-      @team_genres = params[:sport_types]
-      @team_genres.each { |sport| @team.sports << Sport.find_by(name: sport.strip) }
-    end
+      if params[:sport_types]
+        @team_sports = params[:sport_types]
+        @team_sports.each { |sport| @team.sports << Sport.find_by(name: sport.strip) }
+      end
 
     if new_members.any?
       new_members.each { |member| @team.player << Player.find_by(username: member.strip) }
     end
 
     @team.update_attributes(team_params)
-    if @team.save
-      redirect_to teams_path
+
+    redirect_to root_path
     else
-      @errors = @band.errors.full_messages
-      render :new
+      flash[:errors] = @team.errors.full_messages
+      redirect_to new_team_path
     end
   end
 

@@ -1,4 +1,10 @@
 <div class="container">
+    <% if flash[:errors] %>
+       <% flash[:errors].each do |msg| %>
+         <p><%= msg %></p>
+       <% end %>
+    <% end %>
+
 <%= form_for @team do |f| %>
 
     <%= f.label :name, "Team Name:" %><br>
