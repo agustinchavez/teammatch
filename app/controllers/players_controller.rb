@@ -112,8 +112,8 @@ class PlayersController < ApplicationController
         @athletes = position_with_athletes.map {|position| position.players}.flatten
       end
       @athletes = @original_athletes & @athletes
-      @musicians_ids = @musicians.map {|musician| musician.id}
-      render "users/_musicians-location", layout: false
+      @athletes_ids = @athletes.map {|athlete| athlete.id}
+      render "users/_athletes-location", layout: false
     elsif params["Distance"]
       athletes_ids = params["athletes"].split(" ").map {|e| e.to_i}
       original_athletes = Player.find(athletes_ids)
@@ -121,6 +121,7 @@ class PlayersController < ApplicationController
       distance = params["Distance"][0].to_i
       all_athletes_near = Player.within(distance, :origin => player_location)
       @athletes = original_athletes & all_athletes_near
+      @map_string = "https://maps.googleapis.com/maps/api/staticmap?size=600x300&maptype=roadmap" + @athletes.map {|athlete| athlete.map_string}.join("") + "&key=AIzaSyDbL6SGxiaR5BjXdzLPJHxQyjIAhoBVz_o"
       render "players/_athletes-sorted", layout: false
     end
   end

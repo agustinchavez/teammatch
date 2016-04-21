@@ -21,4 +21,9 @@ class Team < ActiveRecord::Base
     self.update(latitude: admin.latitude, longitude: admin.longitude)
   end
 
+  def map_string
+     admin = Player.find(self.admin_id)
+     "&markers=color:red%7Clabel:" + "#{admin.username.first}" +"%7C" + "#{admin.latitude.to_f.to_s}," + "#{admin.longitude.to_f.to_s}"
+  end
+
 end
