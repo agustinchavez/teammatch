@@ -57,14 +57,17 @@
 <% end %>
 <% if @team.has_media? %>
    <%= button_to "See Our Work", root_path, method: :get, class: "button link_media", data: {id: @team.id} %>
-   <div class="media">
-<% @team.media.each do |resource| %>
+<div class="media">
+  <% @team.media.each do |resource| %>
   <% if resource.media_type == "youtube" %>
   <div> <p> <%= resource.content %>:</p>
     <iframe width="420", height="315", src="<%= youtube_embed_link resource %>" , frameborder="0", allowfullscreen></iframe>
   </div>
   <div>
-     <%= button_to "Delete This", media_path(resource), method: :delete, class: "button" %>
+    <%= form_tag media_path(resource), method: :delete do %>
+    <%= hidden_field_tag :team_id, @team.id %>
+    <%= submit_tag("Delete This", class: "button") %>
+    <% end %>
   </div>
   <% end %>
   <% if resource.media_type == "soundcloud" %>
@@ -72,18 +75,24 @@
     <p><%= link_to 'track', resource.link %></p>
   </div>
   <div>
-    <%= button_to "Delete This", media_path(resource), method: :delete, class: "button" %>
+    <%= form_tag media_path(resource), method: :delete do %>
+    <%= hidden_field_tag :team_id, @team.id %>
+    <%= submit_tag("Delete This", class: "button") %>
+    <% end %>
   </div>
-   <% end %>
-<% if resource.media_type == "image" %>
+  <% end %>
+  <% if resource.media_type == "image" %>
   <div> <p> <%= resource.content %>:</p>
     <img src="<%= resource.link %>">
   </div>
   <div>
-    <%= button_to "Delete This", media_path(resource), method: :delete, class: "button" %>
+    <%= form_tag media_path(resource), method: :delete do %>
+    <%= hidden_field_tag :team_id, @team.id %>
+    <%= submit_tag("Delete This", class: "button") %>
+    <% end %>
   </div>
+  <% end %>
+  <% end %>
+</div>
 <% end %>
-  <% end %>
-  </div>
-  <% end %>
-  </div>
+</div>

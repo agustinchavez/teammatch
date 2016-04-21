@@ -33,9 +33,16 @@ class MediaController < ApplicationController
   end
 
   def destroy
-    @media = Media.find(params[:id])
-    @media.destroy
-    redirect_to player_path(current_player)
+    if params["team_id"]
+      @media = Media.find(params[:id])
+      @media.destroy
+      binding.pry
+      redirect_to team_path(params[:team_id])
+    else
+      @media = Media.find(params[:id])
+      @media.destroy
+      redirect_to player_path(current_player)
+    end
   end
 
   def addresource
