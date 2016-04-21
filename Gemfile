@@ -1,4 +1,4 @@
-ruby '2.2.1'
+
 source 'https://rubygems.org'
 
 
@@ -23,6 +23,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'httparty'
 gem 'geokit-rails'
+gem 'faker'
 
 
 
@@ -55,7 +56,6 @@ end
 
 group :development, :test do
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'byebug'
   gem 'pry-rails'
   gem 'rspec-rails'
