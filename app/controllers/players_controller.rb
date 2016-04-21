@@ -5,7 +5,11 @@ class PlayersController < ApplicationController
   end
 
   def new
+    @sports = Sport.all
     @player = Player.new
+    if @player.city == nil
+      render :status => 404
+    end
   end
 
   def create
