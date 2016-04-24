@@ -1,82 +1,82 @@
 <div class="container-fluid">
-  <div class=".col-md-4">
-  <div class="inner-container">
-
-    <h3>Positions</h3>
-    <% @player.positions.each do |position| %>
-      <div class="inner-container"><%= position.name %></div>
-    <% end %>
-  </div>
-
-  <div class="inner-container">
-    <h3>Sports</h3>
-    <% @player.sports.each do |sport| %>
-      <div class="inner-container"><%= sport.name %></div>
-    <% end %>
-  </div>
-
-  <div class="inner-container">
-    <h3>Teams</h3>
-    <% @player.teams.each do |team| %>
-      <div class="inner-container"><%= team.team_name %></div>
-    <% end %>
-  </div>
-
-  <div class="inner-container">
-    <h3>info</h3>
-    <p><%= @player.info %></p>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Positions</h3>
+      <% @player.positions.each do |position| %>
+      <p><%= position.name %></p>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <% if logged_in? %>
+          <%= button_to "Send Email", email_player_path(@player), class: "btn btn-default" %>
+          <% if current_player.id == @player.id %>
+            <%= button_to "Edit Profile", edit_player_path(current_player), method: :get, class: "btn btn-default" %>
+            <%= button_to "Delete Profile", player_path, :confirm => 'Are you sure?',method: :delete, class: "btn btn-default" %>
+            <%= form_tag new_media_path, method: "get" do %>
+            <%= hidden_field_tag :player_id, @player.id %>
+            <%= submit_tag("Add Media Resource", class: "btn btn-default") %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
-
-<div class=".col-md-8">
-  <% if logged_in? %>
-  <% if current_player.id == @player.id %>
-
-  <div class="buttons">
-    <%= button_to "Send Email", email_player_path(@player), class: "button" %>
-     <%= button_to "Edit Profile", edit_player_path(current_player), method: :get, class: "button" %>
-    <%= button_to "Delete Profile", player_path, :confirm => 'Are you sure?',method: :delete, class: "button" %>
-
-    <%= form_tag new_media_path, method: "get" do %>
-      <%= hidden_field_tag :player_id, @player.id %>
-      <%= submit_tag("Add Media", class: "button") %>
-    <% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Sports</h3>
+      <% @player.sports.each do |sport| %>
+      <p><%= sport.name %></p>
+      <% end %>
+    </div>
+    <div class "row">
+      <div class="col-md-6">
+      </div>
+    </div>
   </div>
-  <% end %>
-  <% end %>
+</div>
 
-  <% if @player.has_media? %>
-  <%= button_to "See Our Work", root_path, method: :get, class: "button link_media", data: {id: @player.id} %>
-  <div class="media">
-    <% @player.media.each do |resource| %>
-    <% if resource.media_type == "youtube" %>
-    <div> <p> <%= resource.content %>:</p>
-      <iframe width="420", height="315", src="<%= youtube_embed_link resource %>" , frameborder="0", allowfullscreen></iframe>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Teams</h3>
+      <% @player.teams.each do |team| %>
+      <p><%= team.team_name %></p>
+      <% end %>
     </div>
-    <div>
-     <%= button_to "Delete This", media_path(resource), method: :delete, class: "button" %>
-     </div>
-    <% end %>
-    <% if resource.media_type == "soundcloud" %>
-    <div> <p><%= resource.content %>:</p>
-      <p><%= link_to 'track', resource.link %></p>
-    </div>
-    <div>
-     <%= button_to "Delete This", media_path(resource), method: :delete, class: "button" %>
-    </div>
-    <% end %>
-    <% if resource.media_type == "image" %>
-    <div> <p> <%= resource.content %>:</p>
-      <img src="<%= resource.link %>">
-    </div>
-    <div>
-     <%= button_to "Delete This", media_path(resource), method: :delete, class: "button" %>
-    </div>
-    <% end %>
-    <% end %>
   </div>
-  <% end %>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Info</h3>
+      <p><%= @player.info %></p>
+    </div>
+    <div class="col-md-6">
+      <div class="col-md-6">
+        <% if @player.has_media? %>
+          <% @player.media.each do |resource| %>
+            <% if resource.media_type == "youtube" %>
+              <p> <%= resource.content %>:</p>
+              <iframe width="600", height="495", src="<%= youtube_embed_link resource %>" , frameborder="0", allowfullscreen></iframe>
+              <%= button_to "Delete This", media_path(resource), method: :delete, class: "btn btn-default" %>
+            <% end %>
+           <% if resource.media_type == "soundcloud" %>
+            <p><%= resource.content %>:</p>
+            <p><%= link_to 'track', resource.link %></p>
+          <%= button_to "Delete This", media_path(resource), method: :delete, class: "btn btn-default" %>
+          <% end %>
+        <% if resource.media_type == "image" %>
+          <p> <%= resource.content %>:</p>
+          <img src="<%= resource.link %>">
+          <%= button_to "Delete This", media_path(resource), method: :delete, class: "btn btn-default" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
- </div>
 </div>
