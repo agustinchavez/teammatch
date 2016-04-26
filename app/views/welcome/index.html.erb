@@ -5,12 +5,18 @@
       <h1>Who Are You Searching For?</h1>
       <div id="athlete-team-search" class="text-center">
         <%= form_tag("/search", method: "post") do %>
-        <%= radio_button_tag(:group, "Athletes") %>
-        <%= label_tag(:group, "Athletes", :class => "h2") %>
-        <%= radio_button_tag(:group, "Teams") %>
-        <%= label_tag(:group, "Teams", :class => "h2") %>
-        <br>
-        <%= submit_tag("Search", :class => "btn btn-lg" ) %>
+          <div class="homepage-search">
+          <div class="athlete-radio-button">
+            <%= radio_button_tag(:group, "Athletes") %>
+          <%= label_tag(:group, "Athletes", :class => "h2") %>
+          </div>
+          <div class="team-radio-button">
+            <%= radio_button_tag(:group, "Teams") %>
+            <%= label_tag(:group, "Teams", :class => "h2") %>
+          </div>
+          </div>
+          <br>
+          <%= submit_tag("Search", :class => "btn btn-lg" ) %>
         <% end %>
       </div>
     </div>

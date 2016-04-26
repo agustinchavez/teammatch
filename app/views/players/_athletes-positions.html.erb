@@ -1,12 +1,14 @@
 <div id="athlete-positions-search">
   <% if !@athletes.empty? %>
     <div class="jumbotron text-center drop-shadow">
-      <h1>I want my athlete to play this/these positions:</h1>
+      <h1>Choose a position:</h1>
       <div>
         <%= form_tag("players/search", method: "post") do %>
           <% @positions.each do |position_obj| %>
-          <%= check_box_tag("[Position][#{position_obj.id}]", "#{position_obj.name}") %>
-          <%= label_tag("#{position_obj.name}", nil, :class => "h2") %>
+          <div class="athlete-radio-button">
+            <%= check_box_tag("[Position][#{position_obj.id}]", "#{position_obj.name}") %>
+            <%= label_tag("#{position_obj.name}", nil, :class => "h2") %>
+          </div>
           <%= hidden_field_tag :athletes, @athletes_ids %>
         <% end %>
         <br>
@@ -23,7 +25,6 @@
        <% @athletes.each do |athlete| %>
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYeMmqgj1FO8TbWrQoyo33lLB23fY0xpU6i-yWB4qdjf1mtYTrteryRQ" alt="..." class="">
           <div class="caption">
             <h3 class="text-center"><%= athlete.username %></h3>
             <% if !athlete.positions.empty? %>
