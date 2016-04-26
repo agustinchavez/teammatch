@@ -113,4 +113,13 @@ describe TeamsController do
     end
 
   end
+
+  context "#search" do
+    xit 'finds all of the teams by sport' do
+    end
+
+     xit 'finds all of the teams by distance' do
+     end
+
+   end
 end

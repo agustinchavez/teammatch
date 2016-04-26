@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @sports = Sport.pluck(:name)
     new_members = params[:team][:members].split(",")
-
+    binding.pry
     if @team.valid? && @team.save
       admin = params[:team][:admin]
       admin_id = Player.find_by(username: admin).id
