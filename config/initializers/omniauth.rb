@@ -1,5 +1,5 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :twitter, Rails.application.secrets.twitter_api_key, Rails.application.secrets.twitter_api_secret
+  provider :twitter, ENV["twitter_api_key"], ENV["twitter_api_secret"],
     {
           secure_image_url: 'true',
           image_size: 'original',
@@ -9,9 +9,9 @@ Rails.application.config.middleware.use OmniAuth::Builder do
           }
         }
 
-   provider OmniAuth::Strategies::GoogleOauth2, Rails.application.secrets.google_client_id, Rails.application.secrets.google_client_secret,skip_jwt: true
+   provider :google_oauth2, ENV["google_client_id"], ENV["google_client_secret"],skip_jwt: true
 
-    provider :soundcloud, Rails.application.secrets.soundcloud_client_id, Rails.application.secrets.soundcloud_secret
+    provider :soundcloud, ENV["soundcloud_client_id"], ENV["soundcloud_secret"],
     {
       :name => "soundcloud"
     }

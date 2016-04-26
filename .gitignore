@@ -7,4 +7,3 @@
 !/log/.keep
 /tmp
 /coverage
-/config/secrets.yml
