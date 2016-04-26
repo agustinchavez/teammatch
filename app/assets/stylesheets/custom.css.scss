@@ -73,7 +73,7 @@ html
 }
 
 .btn.btn-lg:hover {
-  color: #2C8437;
+  color: white;
 }
 
 .container-fluid {
@@ -90,6 +90,14 @@ html
 
  h3.player-profile {
    font-size: 35px;
+}
+
+h3.text-center {
+  font-family: 'Playfair Display', sans-serif;
+}
+
+p.text-center {
+  font-family: 'Josefin Sans', serif;
 }
 
 p.player-data {
