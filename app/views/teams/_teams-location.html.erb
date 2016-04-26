@@ -1,8 +1,8 @@
 <div id="teams-location">
 <% if !@teams.empty? %>
   <% if logged_in? %>
-    <div class="jumbotron text-center drop-shadow">
-      <h1>I want my team to be this far away from me:</h1>
+    <div class="jumbotron text-center">
+      <h1>Select a Distance:</h1>
       <div>
         <%= form_tag("teams/search", method: "post") do %>
         <%= label_tag("Miles") %>

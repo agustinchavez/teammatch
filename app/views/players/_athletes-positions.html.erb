@@ -1,7 +1,7 @@
 <div id="athlete-positions-search">
   <% if !@athletes.empty? %>
-    <div class="jumbotron text-center drop-shadow">
-      <h1>Choose a position:</h1>
+    <div class="jumbotron text-center">
+      <h1>Select a position:</h1>
       <div>
         <%= form_tag("players/search", method: "post") do %>
           <% @positions.each do |position_obj| %>
