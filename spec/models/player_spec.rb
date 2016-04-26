@@ -45,26 +45,4 @@ RSpec.describe Player do
 
   end
 
-  context 'has correct validations and associations' do
-
-    it { should have_secure_password }
-
-    it { should validate_presence_of(:username) }
-
-    it { should validate_uniqueness_of(:username) }
-
-    it { should validate_presence_of(:password_digest) }
-
-    it { should validate_presence_of(:phone) }
-
-    it { should have_many(:positions) }
-
-    it { should have_many(:sports) }
-
-    it { should have_many(:teams) }
-
-    it { should have_many(:media) }
-
-  end
-
 end
