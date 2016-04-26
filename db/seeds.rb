@@ -64,6 +64,7 @@ baseball = Sport.create(name: "Baseball")
 softball = Sport.create(name: "Softball")
 football = Sport.create(name: "Football")
 rugby = Sport.create(name: "Rugby")
+hockey = Sport.create(name: "Hockey")
 
 forward = Position.create(name: "Forward")
 midfielder = Position.create(name: "Midfielder")
