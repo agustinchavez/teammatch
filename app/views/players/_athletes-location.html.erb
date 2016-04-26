@@ -2,7 +2,7 @@
 <% if !@athletes.empty? %>
   <% if logged_in? %>
     <div class="jumbotron text-center drop-shadow">
-      <h1>I want my athlete to be this far away from me:</h1>
+      <h1>Select a Distance:</h1>
       <div>
         <%= form_tag("players/search", method: "post") do %>
         <%= label_tag("Miles") %>

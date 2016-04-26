@@ -1,6 +1,6 @@
 <div id="athlete-search-sport">
   <div class="jumbotron text-center drop-shadow">
-    <h1>I want my athlete to play this/these sports:</h1>  <div>
+    <h1>Select a Sport:</h1>  <div>
       <%= form_tag("players/search", method: "post") do %>
         <% @sports.each do |sport_obj| %>
         <div class="athlete-radio-button">

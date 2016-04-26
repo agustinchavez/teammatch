@@ -1,7 +1,7 @@
 <div id="team-search-genre">
   <% if !@teams.empty? %>
   <div class="jumbotron text-center drop-shadow">
-  <h1>What Sport Would You Like The Team To Play?</h1>
+  <h1>Select a Sport:</h1>
   <div>
     <%= form_tag("teams/search", method: "post") do %>
     <% @sports.each do |sport_obj| %>
