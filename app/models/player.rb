@@ -52,6 +52,7 @@ class Player < ActiveRecord::Base
       lat =  res["results"][0]["geometry"]["location"]["lat"]
       lng =  res["results"][0]["geometry"]["location"]["lng"]
       self.update(latitude: lat, longitude: lng)
+    end
   end
 
   def has_lat_long
@@ -65,4 +66,4 @@ def map_string
   "&markers=color:red%7Clabel:" + "#{self.username.first}" +"%7C" + "#{self.latitude.to_f.to_s}," + "#{self.longitude.to_f.to_s}"
 end
 end
-end
+
