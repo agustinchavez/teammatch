@@ -38,7 +38,7 @@
       <div class="col-md-6">
         <% if logged_in? %>
           <% if current_player.id == @player.id %>
-            <%= form_tag new_media_path, method: "get" do %>
+            <%= form_tag new_medium_path, method: "get" do %>
               <%= hidden_field_tag :player_id, @player.id %>
               <%= submit_tag("Add Media", class: "btn btn-lg") %>
             <% end %>
