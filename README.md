@@ -5,6 +5,8 @@ Sign up as a team, and find the right athletes nearby to take your squad to the 
 
 Sign up as an individual, and find a team nearby to play with.
 
+Visit https://teammatch.herokuapp.com/
+
 ##Features
 * Find location of matching athletes and teams with a map feature.
 * Login Authentication with Google and Twitter
