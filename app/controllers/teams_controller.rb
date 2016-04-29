@@ -14,7 +14,7 @@ class TeamsController < ApplicationController
     @sports = Sport.pluck(:name)
     new_members = params[:team][:members].split(",")
     binding.pry
-    if @team.valid? && @team.save
+     if @team.valid? && @team.save
       admin = params[:team][:admin]
       admin_id = Player.find_by(username: admin).id
       @team.update_attributes(admin_id: admin_id)
@@ -24,13 +24,13 @@ class TeamsController < ApplicationController
         @team_sports.each { |sport| @team.sports << Sport.find_by(name: sport.strip) }
       end
 
-    if new_members.any?
-      new_members.each { |member| @team.player << Player.find_by(username: member.strip) }
-    end
+      if new_members.any?
+        new_members.each { |member| @team.players << Player.find_by(username: member.strip) }
+      end
 
-    @team.update_attributes(team_params)
+      @team.update_attributes(team_params)
 
-    redirect_to root_path
+      redirect_to root_path
     else
       flash[:errors] = @team.errors.full_messages
       redirect_to new_team_path
@@ -40,11 +40,6 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
     @team_admin = Player.find(@team.admin_id)
-  end
-
-  def edit
-   @team = Team.find(params[:id])
-   @sports = Sport.pluck(:name)
   end
 
   def update
@@ -80,19 +75,24 @@ class TeamsController < ApplicationController
   redirect_to team_path(@team)
 end
 
-def destroy
-   @teams = Team.find(params[:id])
+  def edit
+    @team = Team.find(params[:id])
+    @sports = Sport.pluck(:name)
+  end
 
-   if @team && params[:member]
-      PlayerTeam.find_by(player_id: params[:member]).destroy
-      redirect_to team_path(@team)
-   elsif @team
-     @team.destroy
-     redirect_to root_path
-   else
-     @errors = @team.errors.full_messages
+  def destroy
+     @teams = Team.find(params[:id])
+
+     if @team && params[:member]
+        PlayerTeam.find_by(player_id: params[:member]).destroy
+        redirect_to team_path(@team)
+     elsif @team
+       @team.destroy
+       redirect_to root_path
+     else
+       @errors = @team.errors.full_messages
+     end
    end
- end
 
 
   def search
