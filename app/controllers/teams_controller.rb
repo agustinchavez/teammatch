@@ -21,7 +21,7 @@ class TeamsController < ApplicationController
 
       if params[:sport_types]
         @team_sports = params[:sport_types]
-        @team_sports.each { |sport| @team.sports << Sport.find_by(name: sport.strip) }
+        @team_sports.each { |sport| @team.sports << Team.find_by(name: sport.strip) }
       end
 
       if new_members.any?
@@ -40,6 +40,11 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
     @team_admin = Player.find(@team.admin_id)
+  end
+
+  def edit
+    @team = Team.find(params[:id])
+    @sports = Sport.pluck(:name)
   end
 
   def update
@@ -75,56 +80,55 @@ class TeamsController < ApplicationController
   redirect_to team_path(@team)
 end
 
-  def edit
-    @team = Team.find(params[:id])
-    @sports = Sport.pluck(:name)
+def edit
+ @team = Team.find(params[:id])
+ @sports = Sport.pluck(:name)
+end
+
+def destroy
+  @team = Team.find(params[:id])
+
+  if @team && params[:member]
+    PlayerTeam.find_by(player_id: params[:member]).destroy
+    redirect_to team_path(@team)
+  elsif @team
+    @team.destroy
+    redirect_to root_path
+  else
+    @errors = @team.errors.full_messages
   end
+end
 
-  def destroy
-     @teams = Team.find(params[:id])
-
-     if @team && params[:member]
-        PlayerTeam.find_by(player_id: params[:member]).destroy
-        redirect_to team_path(@team)
-     elsif @team
-       @team.destroy
-       redirect_to root_path
-     else
-       @errors = @team.errors.full_messages
-     end
-   end
-
-
-  def search
-    if params["Sport"]
-      sport_ids = params["Sport"].map {|e| e[0].to_i}
-      sports = Sport.find(sport_ids)
-      sports_with_teams = sports.select {|sport| !sport.teams.empty?}
-      teams_from_sport = sports_with_teams.map {|sport| sport.teams}.flatten
-      team_ids = teams_from_sport.map {|team| team.id}
-      @teams = Team.find(team_ids)
-      @teams_ids = @teams.map {|team| team.id}
-      render :"teams/_teams-sorted", layout: false
-    elsif params["Distance"]
-      teams_ids = params["teams"].split(" ").map {|e| e.to_i}
-      original_teams = Team.find(team_ids)
-      player_location = [current_player.latitude, current_player.longitude]
-      distance = params["Distance"][0].to_i
-      all_teams_near = Team.within(distance, :origin => player_location)
-      @teams = original_teams & all_teams_near
-      @map_string = "https://maps.googleapis.com/maps/api/staticmap?size=600x300&maptype=roadmap" + @teams.map {|team| team.map_string}.join("") + "&key=AIzaSyDbL6SGxiaR5BjXdzLPJHxQyjIAhoBVz_o"
-      render "teams/_teams-sorted", layout: false
-    end
+def search
+  if params["Sport"]
+    sport_ids = params["Sport"].map {|e| e[0].to_i}
+    sports = Sport.find(sport_ids)
+    sports_with_teams = sports.select {|sport| !sport.teams.empty?}
+    teams_from_sport = sports_with_teams.map {|sport| sport.teams}.flatten
+    team_ids = teams_from_sport.map {|team| team.id}
+    @teams = Team.find(team_ids)
+    @teams_ids = @teams.map {|team| team.id}
+    render :"teams/_teams-location", layout: false
+  elsif params["Distance"]
+    teams_ids = params["teams"].split(" ").map {|e| e.to_i}
+    original_teams = Team.find(teams_ids)
+    player_location = [current_player.latitude, current_player.longitude]
+    distance = params["Distance"][0].to_i
+    all_teams_near = Team.within(distance, :origin => playr_location)
+    @teams = original_teams & all_teams_near
+    @map_string = "https://maps.googleapis.com/maps/api/staticmap?size=600x300&maptype=roadmap" + @teams.map {|team| team.map_string}.join("") + "&key=AIzaSyDbL6SGxiaR5BjXdzLPJHxQyjIAhoBVz_o"
+    render :"teams/_teams-sorted", layout: false
   end
+end
 
-  def media
-    @team = Team.find(params[:id])
-    render partial:'team_media', locals: {team: @team}
-  end
+def media
+  @team = Team.find(params[:id])
+  render partial:'team_media', locals: {team: @team}
+end
 
-  private
+private
 
-  def team_params
-    team_params = params.require(:team).permit(:name, :info)
-  end
+def team_params
+  team_params = params.require(:team).permit(:team_name, :info)
+end
 end
