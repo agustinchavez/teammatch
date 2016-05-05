@@ -14,7 +14,7 @@ class WelcomeController < ApplicationController
 
   def search
     if params[:group] == 'Athletes'
-      @athletes = Athlete.all
+      @athletes = Player.all
       @sports = Sport.all
       @positions = Position.all
       render "players/_athletes", layout: false

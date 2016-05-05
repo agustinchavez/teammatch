@@ -60,11 +60,18 @@ jackie = Player.create(username: "Jackie Robinson", password: "password", email:
 
 soccer = Sport.create(name: "Soccer")
 basketball = Sport.create(name: "Basketball")
-baseball = Sport.create(name: "Baseball")
-softball = Sport.create(name: "Softball")
 football = Sport.create(name: "Football")
-rugby = Sport.create(name: "Rugby")
+baseball = Sport.create(name: "Baseball")
 hockey = Sport.create(name: "Hockey")
+rugby = Sport.create(name: "Rugby")
+softball = Sport.create(name: "Softball")
+volleyball = Sport.create(name: "Volleyball")
+ultimate = Sport.create(name: "Ultimate")
+water_polo = Sport.create(name: "Water Polo")
+cricket = Sport.create(name: "Cricket")
+bowling = Sport.create(name: "Bowling")
+dodgeball = Sport.create(name: "Dodgeball")
+lacrosse = Sport.create(name: "Lacrosse")
 
 forward = Position.create(name: "Forward")
 midfielder = Position.create(name: "Midfielder")
@@ -105,7 +112,6 @@ softballers = [jennie]
 rugby_players = [jonah]
 football_player = [joe, ray]
 
-admins = [javier, michael, derek, ray, mia, jennie]
 
 soccer_players.each do |s|
   s.sports << soccer
