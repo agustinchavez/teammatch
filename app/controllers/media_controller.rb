@@ -13,7 +13,7 @@ class MediaController < ApplicationController
   def create
     puts params
     if params[:media][:showable_type] == "Player"
-      mr = Media.new(media_params)
+      mr = Medium.new(media_params)
       mr.showable = current_player
       mr.save!
       redirect_to player_path(current_player)
@@ -34,11 +34,11 @@ class MediaController < ApplicationController
 
   def destroy
     if params["team_id"]
-      @media = Media.find(params[:id])
+      @media = Medium.find(params[:id])
       @media.destroy
       redirect_to team_path(params[:team_id])
     else
-      @media = Media.find(params[:id])
+      @media = Medium.find(params[:id])
       @media.destroy
       redirect_to player_path(current_player)
     end
