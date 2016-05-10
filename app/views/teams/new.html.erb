@@ -18,7 +18,7 @@
     <p>Please enter your username or the username of another registered player.</p>
     <%= f.text_field :admin %><br>
 
-    <p><%= f.label :sports %></p>
+   <p><%= f.label :sports %></p>
         <% @sports.each do |sport| %>
         <p>
           <%= check_box_tag 'sport_types[]', sport %>
