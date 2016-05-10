@@ -9,7 +9,7 @@ class TeamsController < ApplicationController
     @sports = Sport.pluck(:name)
   end
 
-  def create
+   def create
     @team = Team.new(team_params)
     @sports = Sport.pluck(:name)
     new_members = params[:team][:members].split(",")
@@ -21,7 +21,7 @@ class TeamsController < ApplicationController
 
       if params[:sport_types]
         @team_sports = params[:sport_types]
-        @team_sports.each { |sport| @team.sports << Team.find_by(name: sport.strip) }
+        @team_sports.each { |sport| @team.sports << Sport.find_by(name: sport.strip) }
       end
 
       if new_members.any?
@@ -36,6 +36,7 @@ class TeamsController < ApplicationController
       redirect_to new_team_path
     end
   end
+
 
   def show
     @team = Team.find(params[:id])
@@ -121,7 +122,7 @@ class TeamsController < ApplicationController
     end
   end
 
-  def media
+  def medium
     @team = Team.find(params[:id])
     render partial:'team_media', locals: {team: @team}
   end
