@@ -169,7 +169,7 @@ linebackers.each do |s|
   s.positions << linebacker
 end
 
-pichers.each do |s|
+pitchers.each do |s|
   s.positions << pitcher
 end
 
@@ -193,12 +193,12 @@ left_wingers.each do |s|
   s.positions << left_winger
 end
 
-cobra_kai_fc = Team.create(name: "Cobra Kai Fc", info: Faker::Lorem.paragraph(1), admin_id: javier.id)
-chicago_phil_harmonics = Team.create(name: "Chicago Philhamonics", info: Faker::Lorem.paragraph(1), admin_id: michael.id)
-south_side_sluggers = Team.create(name: "The South Side Sluggers", info: Faker::Lorem.paragraph(1), admin_id: ray.id)
-highway_hurricanes = Team.create(name: "Highway Hurricanes", info: Faker::Lorem.paragraph(1), admin_id: derek.id)
-ruby_ruby_ruby_ruby = Team.create(name: "Ruby, et al.", info: Faker::Lorem.paragraph(1), admin_id: jennie.id)
-latino_heat = Team.create(name: "Latino Heat", info: Faker::Lorem.paragraph(1), admin_id: mia.id)
+cobra_kai_fc = Team.create(team_name: "Cobra Kai Fc", info: Faker::Lorem.paragraph(1), admin_id: javier.id)
+chicago_phil_harmonics = Team.create(team_name: "Chicago Philhamonics", info: Faker::Lorem.paragraph(1), admin_id: michael.id)
+south_side_sluggers = Team.create(team_name: "The South Side Sluggers", info: Faker::Lorem.paragraph(1), admin_id: ray.id)
+highway_hurricanes = Team.create(team_name: "Highway Hurricanes", info: Faker::Lorem.paragraph(1), admin_id: derek.id)
+ruby_ruby_ruby_ruby = Team.create(team_name: "Ruby, et al.", info: Faker::Lorem.paragraph(1), admin_id: jennie.id)
+latino_heat = Team.create(team_name: "Latino Heat", info: Faker::Lorem.paragraph(1), admin_id: mia.id)
 
 
 the_strokes_video1 = strokes.media.create(media_type: "youtube", content: "video", link: "https://www.youtube.com/watch?v=pT68FS3YbQ4")
